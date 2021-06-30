@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.huateng.data.db2.mapper.TblCheckInfMapper" >
+  <resultMap id="BaseResultMap" type="com.huateng.data.model.db2.TblCheckInf" >
+    <id column="tbl_check_inf" property="tblCheckInf" jdbcType="DECIMAL" />
+    <result column="serviceid" property="serviceid" jdbcType="VARCHAR" />
+    <result column="organizationunitid" property="organizationunitid" jdbcType="VARCHAR" />
+    <result column="teller1" property="teller1" jdbcType="VARCHAR" />
+    <result column="teller2" property="teller2" jdbcType="VARCHAR" />
+    <result column="channel" property="channel" jdbcType="VARCHAR" />
+    <result column="bp_plan_type" property="bpPlanType" jdbcType="VARCHAR" />
+    <result column="bp_plant_ype_in" property="bpPlantYpeIn" jdbcType="VARCHAR" />
+    <result column="cust_id" property="custId" jdbcType="VARCHAR" />
+    <result column="cust_id_in" property="custIdIn" jdbcType="VARCHAR" />
+    <result column="acct_id" property="acctId" jdbcType="VARCHAR" />
+    <result column="acct_id_in" property="acctIdIn" jdbcType="VARCHAR" />
+    <result column="adjust_type" property="adjustType" jdbcType="VARCHAR" />
+    <result column="effective_date" property="effectiveDate" jdbcType="VARCHAR" />
+    <result column="valid_date" property="validDate" jdbcType="VARCHAR" />
+    <result column="txn_bonus" property="txnBonus" jdbcType="DECIMAL" />
+    <result column="txn_desc" property="txnDesc" jdbcType="VARCHAR" />
+    <result column="txn_code" property="txnCode" jdbcType="VARCHAR" />
+    <result column="txn_ext_info" property="txnExtInfo" jdbcType="VARCHAR" />
+    <result column="chg_rate" property="chgRate" jdbcType="VARCHAR" />
+    <result column="opr_flag" property="oprFlag" jdbcType="VARCHAR" />
+    <result column="check_desc" property="checkDesc" jdbcType="VARCHAR" />
+    <result column="usage_key" property="usageKey" jdbcType="VARCHAR" />
+    <result column="create_oper" property="createOper" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    <result column="modify_oper" property="modifyOper" jdbcType="VARCHAR" />
+    <result column="modify_date" property="modifyDate" jdbcType="VARCHAR" />
+    <result column="modify_time" property="modifyTime" jdbcType="VARCHAR" />
+    <result column="ext_coulmn1" property="extCoulmn1" jdbcType="VARCHAR" />
+    <result column="ext_coulmn2" property="extCoulmn2" jdbcType="VARCHAR" />
+    <result column="ext_coulmn3" property="extCoulmn3" jdbcType="VARCHAR" />
+    <result column="ext_coulmn4" property="extCoulmn4" jdbcType="DECIMAL" />
+    <result column="buss_id" property="bussId" jdbcType="VARCHAR" />
+    <result column="buss_type" property="bussType" jdbcType="VARCHAR" />
+    <result column="opt_type" property="optType" jdbcType="VARCHAR" />
+    <result column="batch_flag" property="batchFlag" jdbcType="VARCHAR" />
+    <result column="batch_id" property="batchId" jdbcType="DECIMAL" />
+    <result column="txn_items" property="txnItems" jdbcType="VARCHAR" />
+    <result column="station_id" property="stationId" jdbcType="VARCHAR" />
+    <result column="bonus_into_type" property="bonusIntoType" jdbcType="VARCHAR" />
+    <result column="adjust_property" property="adjustProperty" jdbcType="VARCHAR" />
+    <result column="adjust_order_id" property="adjustOrderId" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <insert id="insertSelective" parameterType="com.huateng.data.model.db2.TblCheckInf" >
+    <selectKey resultType="decimal" keyProperty="tblCheckInf" order="BEFORE">
+      select seq_check_inf.nextval from dual
+    </selectKey>
+
+    insert into tbl_check_inf
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tblCheckInf != null" >
+        tbl_check_inf,
+      </if>
+      <if test="serviceid != null" >
+        serviceid,
+      </if>
+      <if test="organizationunitid != null" >
+        organizationunitid,
+      </if>
+      <if test="teller1 != null" >
+        teller1,
+      </if>
+      <if test="teller2 != null" >
+        teller2,
+      </if>
+      <if test="channel != null" >
+        channel,
+      </if>
+      <if test="bpPlanType != null" >
+        bp_plan_type,
+      </if>
+      <if test="bpPlantYpeIn != null" >
+        bp_plant_ype_in,
+      </if>
+      <if test="custId != null" >
+        cust_id,
+      </if>
+      <if test="custIdIn != null" >
+        cust_id_in,
+      </if>
+      <if test="acctId != null" >
+        acct_id,
+      </if>
+      <if test="acctIdIn != null" >
+        acct_id_in,
+      </if>
+      <if test="adjustType != null" >
+        adjust_type,
+      </if>
+      <if test="effectiveDate != null" >
+        effective_date,
+      </if>
+      <if test="validDate != null" >
+        valid_date,
+      </if>
+      <if test="txnBonus != null" >
+        txn_bonus,
+      </if>
+      <if test="txnDesc != null" >
+        txn_desc,
+      </if>
+      <if test="txnCode != null" >
+        txn_code,
+      </if>
+      <if test="txnExtInfo != null" >
+        txn_ext_info,
+      </if>
+      <if test="chgRate != null" >
+        chg_rate,
+      </if>
+      <if test="oprFlag != null" >
+        opr_flag,
+      </if>
+      <if test="checkDesc != null" >
+        check_desc,
+      </if>
+      <if test="usageKey != null" >
+        usage_key,
+      </if>
+      <if test="createOper != null" >
+        create_oper,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="modifyOper != null" >
+        modify_oper,
+      </if>
+      <if test="modifyDate != null" >
+        modify_date,
+      </if>
+      <if test="modifyTime != null" >
+        modify_time,
+      </if>
+      <if test="extCoulmn1 != null" >
+        ext_coulmn1,
+      </if>
+      <if test="extCoulmn2 != null" >
+        ext_coulmn2,
+      </if>
+      <if test="extCoulmn3 != null" >
+        ext_coulmn3,
+      </if>
+      <if test="extCoulmn4 != null" >
+        ext_coulmn4,
+      </if>
+      <if test="bussId != null" >
+        buss_id,
+      </if>
+      <if test="bussType != null" >
+        buss_type,
+      </if>
+      <if test="optType != null" >
+        opt_type,
+      </if>
+      <if test="batchFlag != null" >
+        batch_flag,
+      </if>
+      <if test="batchId != null" >
+        batch_id,
+      </if>
+      <if test="txnItems != null" >
+        txn_items,
+      </if>
+      <if test="stationId != null" >
+        station_id,
+      </if>
+      <if test="bonusIntoType != null" >
+        bonus_into_type,
+      </if>
+      <if test="adjustProperty != null" >
+        adjust_property,
+      </if>
+      <if test="adjustOrderId != null" >
+        adjust_order_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tblCheckInf != null" >
+        #{tblCheckInf,jdbcType=DECIMAL},
+      </if>
+      <if test="serviceid != null" >
+        #{serviceid,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationunitid != null" >
+        #{organizationunitid,jdbcType=VARCHAR},
+      </if>
+      <if test="teller1 != null" >
+        #{teller1,jdbcType=VARCHAR},
+      </if>
+      <if test="teller2 != null" >
+        #{teller2,jdbcType=VARCHAR},
+      </if>
+      <if test="channel != null" >
+        #{channel,jdbcType=VARCHAR},
+      </if>
+      <if test="bpPlanType != null" >
+        #{bpPlanType,jdbcType=VARCHAR},
+      </if>
+      <if test="bpPlantYpeIn != null" >
+        #{bpPlantYpeIn,jdbcType=VARCHAR},
+      </if>
+      <if test="custId != null" >
+        #{custId,jdbcType=VARCHAR},
+      </if>
+      <if test="custIdIn != null" >
+        #{custIdIn,jdbcType=VARCHAR},
+      </if>
+      <if test="acctId != null" >
+        #{acctId,jdbcType=VARCHAR},
+      </if>
+      <if test="acctIdIn != null" >
+        #{acctIdIn,jdbcType=VARCHAR},
+      </if>
+      <if test="adjustType != null" >
+        #{adjustType,jdbcType=VARCHAR},
+      </if>
+      <if test="effectiveDate != null" >
+        #{effectiveDate,jdbcType=VARCHAR},
+      </if>
+      <if test="validDate != null" >
+        #{validDate,jdbcType=VARCHAR},
+      </if>
+      <if test="txnBonus != null" >
+        #{txnBonus,jdbcType=DECIMAL},
+      </if>
+      <if test="txnDesc != null" >
+        #{txnDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="txnCode != null" >
+        #{txnCode,jdbcType=VARCHAR},
+      </if>
+      <if test="txnExtInfo != null" >
+        #{txnExtInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="chgRate != null" >
+        #{chgRate,jdbcType=VARCHAR},
+      </if>
+      <if test="oprFlag != null" >
+        #{oprFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="checkDesc != null" >
+        #{checkDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="usageKey != null" >
+        #{usageKey,jdbcType=VARCHAR},
+      </if>
+      <if test="createOper != null" >
+        #{createOper,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyOper != null" >
+        #{modifyOper,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyDate != null" >
+        #{modifyDate,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="extCoulmn1 != null" >
+        #{extCoulmn1,jdbcType=VARCHAR},
+      </if>
+      <if test="extCoulmn2 != null" >
+        #{extCoulmn2,jdbcType=VARCHAR},
+      </if>
+      <if test="extCoulmn3 != null" >
+        #{extCoulmn3,jdbcType=VARCHAR},
+      </if>
+      <if test="extCoulmn4 != null" >
+        #{extCoulmn4,jdbcType=DECIMAL},
+      </if>
+      <if test="bussId != null" >
+        #{bussId,jdbcType=VARCHAR},
+      </if>
+      <if test="bussType != null" >
+        #{bussType,jdbcType=VARCHAR},
+      </if>
+      <if test="optType != null" >
+        #{optType,jdbcType=VARCHAR},
+      </if>
+      <if test="batchFlag != null" >
+        #{batchFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="batchId != null" >
+        #{batchId,jdbcType=DECIMAL},
+      </if>
+      <if test="txnItems != null" >
+        #{txnItems,jdbcType=VARCHAR},
+      </if>
+      <if test="stationId != null" >
+        #{stationId,jdbcType=VARCHAR},
+      </if>
+      <if test="bonusIntoType != null" >
+        #{bonusIntoType,jdbcType=VARCHAR},
+      </if>
+      <if test="adjustProperty != null" >
+        #{adjustProperty,jdbcType=VARCHAR},
+      </if>
+      <if test="adjustOrderId != null" >
+        #{adjustOrderId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+</mapper>

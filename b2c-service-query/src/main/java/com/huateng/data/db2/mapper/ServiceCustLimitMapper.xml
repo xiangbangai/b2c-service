@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huateng.data.db2.mapper.ServiceCustLimitMapper">
+    <resultMap id="BaseResultMap" type="com.huateng.data.model.db2.ServiceCustLimit">
+        <id column="cust_id" jdbcType="VARCHAR" property="custId"/>
+        <id column="limit_type" jdbcType="SMALLINT" property="limitType"/>
+        <result column="limit_key" jdbcType="VARCHAR" property="limitKey"/>
+        <result column="limit_value" jdbcType="DECIMAL" property="limitValue"/>
+    </resultMap>
+
+    <select id="getLimitInfo" parameterType="com.huateng.data.model.db2.ServiceCustLimit" resultMap="BaseResultMap">
+        select * from service_cust_limit
+        <where>
+            <if test="limitKey != null">
+                and limit_key = #{limitKey}
+            </if>
+            <if test="limitType != null">
+                and limit_type = #{limitType}
+            </if>
+            <if test="custId != null">
+                and cust_id = #{custId}
+            </if>
+        </where>
+    </select>
+</mapper>

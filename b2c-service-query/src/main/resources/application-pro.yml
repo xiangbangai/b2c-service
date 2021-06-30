@@ -1,0 +1,59 @@
+spring:
+  application:
+    name: b2c-service-query
+  cloud:
+    consul:
+      host: 127.0.0.1
+      port: 8500
+      discovery:
+        prefer-ip-address: true
+        instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
+        health-check-path: /actuator/health
+        health-check-interval: 10s
+        acl-token: 4caf7aa1-45d6-92f4-3d77-36d9b3cb5071
+        register: true
+        deregister: false
+  datasource:
+    db1:
+      jdbcUrl: jdbc:mysql://192.168.1.48:3306/couponDzq?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=UTC
+      username: dzquser
+      password: ENC(mVeXmlvgx0dJ7o7JASac0Gr3E6Q71hgM)
+      driverClassName: com.mysql.cj.jdbc.Driver
+      minimum-idle: 10
+      maximum-pool-size: 30
+      max-lifetime: 20000000
+    db2:
+      jdbcUrl: jdbc:informix-sqli://192.168.1.133:8000/bppc_bpas:informixserver=onb2cifmx;NEWCODESET=GB18030,819,819;IFX_USE_STRENC=true;IFX_LOCK_MODE_WAIT=1
+      username: b2cu1
+      password: ENC(/h8GdbBJ1Cxocyv4DOvYSEnw7TdXGvIp)
+      driverClassName: com.informix.jdbc.IfxDriver
+      minimum-idle: 10
+      maximum-pool-size: 30
+      max-lifetime: 20000000
+    db3:
+      jdbcUrl: jdbc:informix-sqli://192.168.1.132:8888/bppc_invoice:informixserver=onzybpifmx;NEWCODESET=GB18030,819,819;IFX_USE_STRENC=true;IFX_LOCK_MODE_WAIT=1
+      username: b2cinv
+      password: ENC(00sFarNfeWj9OGjji8CKlln5sC/5ecFQ)
+      driverClassName: com.informix.jdbc.IfxDriver
+      minimum-idle: 10
+      maximum-pool-size: 30
+      max-lifetime: 20000000
+server:
+  undertow:
+    max-http-post-size: 0
+    io-threads: 16
+    worker-threads: 128
+    buffer-size: 1024
+    direct-buffers: true
+feign:
+  compression:
+    request:
+      enabled: true
+      mime-types: application/json
+    response:
+      enabled: true
+swagger:
+  enabled: false
+WeChat:
+  queryInvoice:
+    url: http://wxapi01.bppc.com.cn/zy-wxweb/api/invoice/query

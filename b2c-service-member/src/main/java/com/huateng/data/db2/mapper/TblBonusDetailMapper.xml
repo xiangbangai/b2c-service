@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.huateng.data.db2.mapper.TblBonusDetailMapper" >
+  <resultMap id="BaseResultMap" type="com.huateng.data.model.db2.TblBonusDetail" >
+    <id column="pk_bonus_detail" property="pkBonusDetail" jdbcType="DECIMAL" />
+    <result column="cust_id" property="custId" jdbcType="VARCHAR" />
+    <result column="acct_id" property="acctId" jdbcType="VARCHAR" />
+    <result column="usage_key" property="usageKey" jdbcType="VARCHAR" />
+    <result column="txn_type" property="txnType" jdbcType="VARCHAR" />
+    <result column="txn_code" property="txnCode" jdbcType="VARCHAR" />
+    <result column="bonus_cd_flag" property="bonusCdFlag" jdbcType="VARCHAR" />
+    <result column="bonus_ssn" property="bonusSsn" jdbcType="VARCHAR" />
+    <result column="bp_plan_type" property="bpPlanType" jdbcType="VARCHAR" />
+    <result column="valid_date" property="validDate" jdbcType="VARCHAR" />
+    <result column="txn_bonus" property="txnBonus" jdbcType="DECIMAL" />
+    <result column="valid_bonus" property="validBonus" jdbcType="DECIMAL" />
+    <result column="bp_valid_bonus" property="bpValidBonus" jdbcType="DECIMAL" />
+    <result column="activity_id" property="activityId" jdbcType="VARCHAR" />
+    <result column="rule_id" property="ruleId" jdbcType="VARCHAR" />
+    <result column="bonus_ssn_ora" property="bonusSsnOra" jdbcType="VARCHAR" />
+    <result column="txn_code_ora" property="txnCodeOra" jdbcType="VARCHAR" />
+    <result column="txn_desc_ora" property="txnDescOra" jdbcType="VARCHAR" />
+    <result column="txn_amt_ora" property="txnAmtOra" jdbcType="DECIMAL" />
+    <result column="txn_cnt_ora" property="txnCntOra" jdbcType="DECIMAL" />
+    <result column="txn_date_ora" property="txnDateOra" jdbcType="VARCHAR" />
+    <result column="txn_date" property="txnDate" jdbcType="VARCHAR" />
+    <result column="txn_time" property="txnTime" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    <result column="stlm_date" property="stlmDate" jdbcType="VARCHAR" />
+    <result column="activity_nm" property="activityNm" jdbcType="VARCHAR" />
+    <result column="rule_nm" property="ruleNm" jdbcType="VARCHAR" />
+    <result column="channel_no" property="channelNo" jdbcType="VARCHAR" />
+    <result column="ext_coulmn1" property="extCoulmn1" jdbcType="VARCHAR" />
+    <result column="ext_coulmn2" property="extCoulmn2" jdbcType="VARCHAR" />
+    <result column="ext_coulmn3" property="extCoulmn3" jdbcType="VARCHAR" />
+    <result column="ext_coulmn4" property="extCoulmn4" jdbcType="DECIMAL" />
+    <result column="return_flag" property="returnFlag" jdbcType="VARCHAR" />
+    <result column="station_id" property="stationId" jdbcType="VARCHAR" />
+    <result column="pos_id" property="posId" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.huateng.data.model.db2.TblBonusDetail" extends="BaseResultMap" >
+    <result column="detail_desc" property="detailDesc" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    pk_bonus_detail, cust_id, acct_id, usage_key, txn_type, txn_code, bonus_cd_flag, 
+    bonus_ssn, bp_plan_type, valid_date, txn_bonus, valid_bonus, bp_valid_bonus, activity_id, 
+    rule_id, bonus_ssn_ora, txn_code_ora, txn_desc_ora, txn_amt_ora, txn_cnt_ora, txn_date_ora, 
+    txn_date, txn_time, create_date, create_time, stlm_date, activity_nm, rule_nm, channel_no, 
+    ext_coulmn1, ext_coulmn2, ext_coulmn3, ext_coulmn4, return_flag, station_id, pos_id
+  </sql>
+  <sql id="Blob_Column_List" >
+    detail_desc
+  </sql>
+
+
+  <insert id="insert" parameterType="com.huateng.data.model.db2.TblBonusDetail" >
+      <selectKey resultType="decimal" keyProperty="pkBonusDetail" order="BEFORE">
+        select seq_bonus_detail.nextval from dual
+      </selectKey>
+
+    insert into tbl_bonus_detail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pkBonusDetail != null" >
+        pk_bonus_detail,
+      </if>
+      <if test="custId != null" >
+        cust_id,
+      </if>
+      <if test="acctId != null" >
+        acct_id,
+      </if>
+      <if test="usageKey != null" >
+        usage_key,
+      </if>
+      <if test="txnType != null" >
+        txn_type,
+      </if>
+      <if test="txnCode != null" >
+        txn_code,
+      </if>
+      <if test="bonusCdFlag != null" >
+        bonus_cd_flag,
+      </if>
+      <if test="bonusSsn != null" >
+        bonus_ssn,
+      </if>
+      <if test="bpPlanType != null" >
+        bp_plan_type,
+      </if>
+      <if test="validDate != null" >
+        valid_date,
+      </if>
+      <if test="txnBonus != null" >
+        txn_bonus,
+      </if>
+      <if test="validBonus != null" >
+        valid_bonus,
+      </if>
+      <if test="bpValidBonus != null" >
+        bp_valid_bonus,
+      </if>
+      <if test="activityId != null" >
+        activity_id,
+      </if>
+      <if test="ruleId != null" >
+        rule_id,
+      </if>
+      <if test="bonusSsnOra != null" >
+        bonus_ssn_ora,
+      </if>
+      <if test="txnCodeOra != null" >
+        txn_code_ora,
+      </if>
+      <if test="txnDescOra != null" >
+        txn_desc_ora,
+      </if>
+      <if test="txnAmtOra != null" >
+        txn_amt_ora,
+      </if>
+      <if test="txnCntOra != null" >
+        txn_cnt_ora,
+      </if>
+      <if test="txnDateOra != null" >
+        txn_date_ora,
+      </if>
+      <if test="txnDate != null" >
+        txn_date,
+      </if>
+      <if test="txnTime != null" >
+        txn_time,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="stlmDate != null" >
+        stlm_date,
+      </if>
+      <if test="activityNm != null" >
+        activity_nm,
+      </if>
+      <if test="ruleNm != null" >
+        rule_nm,
+      </if>
+      <if test="channelNo != null" >
+        channel_no,
+      </if>
+      <if test="extCoulmn1 != null" >
+        ext_coulmn1,
+      </if>
+      <if test="extCoulmn2 != null" >
+        ext_coulmn2,
+      </if>
+      <if test="extCoulmn3 != null" >
+        ext_coulmn3,
+      </if>
+      <if test="extCoulmn4 != null" >
+        ext_coulmn4,
+      </if>
+      <if test="returnFlag != null" >
+        return_flag,
+      </if>
+      <if test="stationId != null" >
+        station_id,
+      </if>
+      <if test="posId != null" >
+        pos_id,
+      </if>
+      <if test="detailDesc != null" >
+        detail_desc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pkBonusDetail != null" >
+        #{pkBonusDetail,jdbcType=DECIMAL},
+      </if>
+      <if test="custId != null" >
+        #{custId,jdbcType=VARCHAR},
+      </if>
+      <if test="acctId != null" >
+        #{acctId,jdbcType=VARCHAR},
+      </if>
+      <if test="usageKey != null" >
+        #{usageKey,jdbcType=VARCHAR},
+      </if>
+      <if test="txnType != null" >
+        #{txnType,jdbcType=VARCHAR},
+      </if>
+      <if test="txnCode != null" >
+        #{txnCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bonusCdFlag != null" >
+        #{bonusCdFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="bonusSsn != null" >
+        #{bonusSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="bpPlanType != null" >
+        #{bpPlanType,jdbcType=VARCHAR},
+      </if>
+      <if test="validDate != null" >
+        #{validDate,jdbcType=VARCHAR},
+      </if>
+      <if test="txnBonus != null" >
+        #{txnBonus,jdbcType=DECIMAL},
+      </if>
+      <if test="validBonus != null" >
+        #{validBonus,jdbcType=DECIMAL},
+      </if>
+      <if test="bpValidBonus != null" >
+        #{bpValidBonus,jdbcType=DECIMAL},
+      </if>
+      <if test="activityId != null" >
+        #{activityId,jdbcType=VARCHAR},
+      </if>
+      <if test="ruleId != null" >
+        #{ruleId,jdbcType=VARCHAR},
+      </if>
+      <if test="bonusSsnOra != null" >
+        #{bonusSsnOra,jdbcType=VARCHAR},
+      </if>
+      <if test="txnCodeOra != null" >
+        #{txnCodeOra,jdbcType=VARCHAR},
+      </if>
+      <if test="txnDescOra != null" >
+        #{txnDescOra,jdbcType=VARCHAR},
+      </if>
+      <if test="txnAmtOra != null" >
+        #{txnAmtOra,jdbcType=DECIMAL},
+      </if>
+      <if test="txnCntOra != null" >
+        #{txnCntOra,jdbcType=DECIMAL},
+      </if>
+      <if test="txnDateOra != null" >
+        #{txnDateOra,jdbcType=VARCHAR},
+      </if>
+      <if test="txnDate != null" >
+        #{txnDate,jdbcType=VARCHAR},
+      </if>
+      <if test="txnTime != null" >
+        #{txnTime,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="stlmDate != null" >
+        #{stlmDate,jdbcType=VARCHAR},
+      </if>
+      <if test="activityNm != null" >
+        #{activityNm,jdbcType=VARCHAR},
+      </if>
+      <if test="ruleNm != null" >
+        #{ruleNm,jdbcType=VARCHAR},
+      </if>
+      <if test="channelNo != null" >
+        #{channelNo,jdbcType=VARCHAR},
+      </if>
+      <if test="extCoulmn1 != null" >
+        #{extCoulmn1,jdbcType=VARCHAR},
+      </if>
+      <if test="extCoulmn2 != null" >
+        #{extCoulmn2,jdbcType=VARCHAR},
+      </if>
+      <if test="extCoulmn3 != null" >
+        #{extCoulmn3,jdbcType=VARCHAR},
+      </if>
+      <if test="extCoulmn4 != null" >
+        #{extCoulmn4,jdbcType=DECIMAL},
+      </if>
+      <if test="returnFlag != null" >
+        #{returnFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="stationId != null" >
+        #{stationId,jdbcType=VARCHAR},
+      </if>
+      <if test="posId != null" >
+        #{posId,jdbcType=VARCHAR},
+      </if>
+      <if test="detailDesc != null" >
+        #{detailDesc,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.huateng.data.model.db2.TblBonusDetail" >
+    update tbl_bonus_detail
+    <set >
+      <if test="custId != null" >
+        cust_id = #{custId,jdbcType=VARCHAR},
+      </if>
+      <if test="acctId != null" >
+        acct_id = #{acctId,jdbcType=VARCHAR},
+      </if>
+      <if test="usageKey != null" >
+        usage_key = #{usageKey,jdbcType=VARCHAR},
+      </if>
+      <if test="txnType != null" >
+        txn_type = #{txnType,jdbcType=VARCHAR},
+      </if>
+      <if test="txnCode != null" >
+        txn_code = #{txnCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bonusCdFlag != null" >
+        bonus_cd_flag = #{bonusCdFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="bonusSsn != null" >
+        bonus_ssn = #{bonusSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="bpPlanType != null" >
+        bp_plan_type = #{bpPlanType,jdbcType=VARCHAR},
+      </if>
+      <if test="validDate != null" >
+        valid_date = #{validDate,jdbcType=VARCHAR},
+      </if>
+      <if test="txnBonus != null" >
+        txn_bonus = #{txnBonus,jdbcType=DECIMAL},
+      </if>
+      <if test="validBonus != null" >
+        valid_bonus = #{validBonus,jdbcType=DECIMAL},
+      </if>
+      <if test="bpValidBonus != null" >
+        bp_valid_bonus = #{bpValidBonus,jdbcType=DECIMAL},
+      </if>
+      <if test="activityId != null" >
+        activity_id = #{activityId,jdbcType=VARCHAR},
+      </if>
+      <if test="ruleId != null" >
+        rule_id = #{ruleId,jdbcType=VARCHAR},
+      </if>
+      <if test="bonusSsnOra != null" >
+        bonus_ssn_ora = #{bonusSsnOra,jdbcType=VARCHAR},
+      </if>
+      <if test="txnCodeOra != null" >
+        txn_code_ora = #{txnCodeOra,jdbcType=VARCHAR},
+      </if>
+      <if test="txnDescOra != null" >
+        txn_desc_ora = #{txnDescOra,jdbcType=VARCHAR},
+      </if>
+      <if test="txnAmtOra != null" >
+        txn_amt_ora = #{txnAmtOra,jdbcType=DECIMAL},
+      </if>
+      <if test="txnCntOra != null" >
+        txn_cnt_ora = #{txnCntOra,jdbcType=DECIMAL},
+      </if>
+      <if test="txnDateOra != null" >
+        txn_date_ora = #{txnDateOra,jdbcType=VARCHAR},
+      </if>
+      <if test="txnDate != null" >
+        txn_date = #{txnDate,jdbcType=VARCHAR},
+      </if>
+      <if test="txnTime != null" >
+        txn_time = #{txnTime,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="stlmDate != null" >
+        stlm_date = #{stlmDate,jdbcType=VARCHAR},
+      </if>
+      <if test="activityNm != null" >
+        activity_nm = #{activityNm,jdbcType=VARCHAR},
+      </if>
+      <if test="ruleNm != null" >
+        rule_nm = #{ruleNm,jdbcType=VARCHAR},
+      </if>
+      <if test="channelNo != null" >
+        channel_no = #{channelNo,jdbcType=VARCHAR},
+      </if>
+      <if test="extCoulmn1 != null" >
+        ext_coulmn1 = #{extCoulmn1,jdbcType=VARCHAR},
+      </if>
+      <if test="extCoulmn2 != null" >
+        ext_coulmn2 = #{extCoulmn2,jdbcType=VARCHAR},
+      </if>
+      <if test="extCoulmn3 != null" >
+        ext_coulmn3 = #{extCoulmn3,jdbcType=VARCHAR},
+      </if>
+      <if test="extCoulmn4 != null" >
+        ext_coulmn4 = #{extCoulmn4,jdbcType=DECIMAL},
+      </if>
+      <if test="returnFlag != null" >
+        return_flag = #{returnFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="stationId != null" >
+        station_id = #{stationId,jdbcType=VARCHAR},
+      </if>
+      <if test="posId != null" >
+        pos_id = #{posId,jdbcType=VARCHAR},
+      </if>
+      <if test="detailDesc != null" >
+        detail_desc = #{detailDesc,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where pk_bonus_detail = #{pkBonusDetail,jdbcType=DECIMAL}
+  </update>
+
+  <update id="updateReturnFlagByPrimaryKey">
+    update tbl_bonus_detail set txn_bonus=#{txnBonus},return_flag='1' where pk_bonus_detail = #{pkBonusDetail}
+  </update>
+</mapper>

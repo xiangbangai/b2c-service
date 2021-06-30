@@ -1,0 +1,27 @@
+spring:
+  datasource:
+    db2:
+      ifxIFXHOST: 192.168.10.16
+      serverName: B2C_TEST
+      portNumber: 8811
+      databaseName: bppc_dev
+      user: informix
+      password: ENC(j6M/lcP6zc60HWx7qYCuI7c/VF3J/hHL)
+      ifxNEWCODESET: GB18030-2000,8859-1,819
+      ifxIFX_USE_STRENC: true
+      ifxDBDATE: Y4MD-
+      ifxDB_LOCALE: en_US.8859-1
+      ifxCLIENT_LOCALE: en_US.utf8
+      url: jdbc:informix-sqli://192.168.10.16:8811/bppc_dev:informixserver=B2C_TEST;NEWCODESET=GB18030,819,819
+      minPoolSize: 5
+      maxPoolSize: 15
+      maxLifeTime: 20000
+      borrowConnectionTimeout: 30
+  jta:
+    atomikos:
+      properties:
+        log-base-dir: ${user.dir}/logs
+        enable-logging: false
+request:
+  header:
+    referer: "http://127.0.0.1:8080/login"

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.huateng.data.db2.mapper.TblOrderDetailMapper" >
+  <resultMap id="BaseResultMap" type="com.huateng.data.model.db2.TblOrderDetail" >
+    <id column="pk_order_dtl" property="pkOrderDtl" jdbcType="INTEGER" />
+    <result column="order_id" property="orderId" jdbcType="VARCHAR" />
+    <result column="bp_plan_type" property="bpPlanType" jdbcType="VARCHAR" />
+    <result column="cust_id" property="custId" jdbcType="VARCHAR" />
+    <result column="cust_level" property="custLevel" jdbcType="VARCHAR" />
+    <result column="card_level" property="cardLevel" jdbcType="VARCHAR" />
+    <result column="cust_name" property="custName" jdbcType="VARCHAR" />
+    <result column="acct_id" property="acctId" jdbcType="VARCHAR" />
+    <result column="mcht_id" property="mchtId" jdbcType="VARCHAR" />
+    <result column="goods_id" property="goodsId" jdbcType="VARCHAR" />
+    <result column="goods_nm" property="goodsNm" jdbcType="VARCHAR" />
+    <result column="order_num" property="orderNum" jdbcType="DECIMAL" />
+    <result column="order_bonus" property="orderBonus" jdbcType="DECIMAL" />
+    <result column="order_amount" property="orderAmount" jdbcType="DECIMAL" />
+    <result column="order_cancel" property="orderCancel" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    <result column="to_rms_time" property="toRmsTime" jdbcType="VARCHAR" />
+    <result column="return_time" property="returnTime" jdbcType="VARCHAR" />
+    <result column="order_detail_id" property="orderDetailId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    pk_order_dtl, order_id, bp_plan_type, cust_id, cust_level, card_level, cust_name, 
+    acct_id, mcht_id, goods_id, goods_nm, order_num, order_bonus, order_amount, order_cancel, 
+    create_time, to_rms_time, return_time, order_detail_id
+  </sql>
+
+  <select id="getByOrderId" resultMap="BaseResultMap">
+    select * from tbl_order_detail where order_id=#{orderId}
+  </select>
+
+</mapper>

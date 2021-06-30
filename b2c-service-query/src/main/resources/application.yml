@@ -1,0 +1,16 @@
+spring:
+  jackson:
+    default-property-inclusion: non_empty
+server:
+  port: 8101
+jasypt:
+  encryptor:
+    password: $2a$04$4mrJX.XBfqh4uGtXzveSKOuHGie8tlT.0..hbf5JRJ77Xtb462xj2
+app:
+  id: b2c-service
+apollo:
+  bootstrap:
+    enabled: true
+    namespaces: application, app-yml.yml, app-control
+token:
+  secret: $2a$04$tNwRM7EI8x45sjGYhPTu/eakGExAvu/m4jn.j2lPObBtdJfSl2g7C

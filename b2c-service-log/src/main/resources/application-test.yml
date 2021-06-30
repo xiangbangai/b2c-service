@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: b2c-service-log
+  cloud:
+    consul:
+      host: 192.168.10.48
+      port: 8500
+      discovery:
+        prefer-ip-address: true
+        instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
+        health-check-path: /actuator/health
+        health-check-interval: 10s
+        acl-token:
+        register: true
+        deregister: true
+server:
+  undertow:
+    max-http-post-size: 0
+    io-threads: 8
+    worker-threads: 64
+    buffer-size: 1024
+    direct-buffers: true
+feign:
+  compression:
+    request:
+      enabled: true
+      mime-types: application/json
+    response:
+      enabled: true
+swagger:
+  enabled: false

@@ -1,0 +1,43 @@
+{
+  "clusterServersConfig": {
+    "idleConnectionTimeout": 10000,
+    "connectTimeout": 4000,
+    "timeout": 3000,
+    "retryAttempts": 3,
+    "retryInterval": 1500,
+    "failedSlaveReconnectionInterval": 3000,
+    "failedSlaveCheckInterval": 60000,
+    "password": "7/BLP2V3eskZ0CRAAd4Xi3VTgqm4Y6CB",
+    "subscriptionsPerConnection": 5,
+    "clientName": null,
+    "loadBalancer": {
+      "class": "org.redisson.connection.balancer.RoundRobinLoadBalancer"
+    },
+    "subscriptionConnectionMinimumIdleSize": 1,
+    "subscriptionConnectionPoolSize": 256,
+    "slaveConnectionMinimumIdleSize": 32,
+    "slaveConnectionPoolSize": 256,
+    "masterConnectionMinimumIdleSize": 32,
+    "masterConnectionPoolSize": 256,
+    "readMode": "SLAVE",
+    "subscriptionMode": "SLAVE",
+    "nodeAddresses": [
+      "redis://192.168.10.48:6379",
+      "redis://192.168.10.48:6380",
+      "redis://192.168.10.48:6381",
+      "redis://192.168.10.48:6382",
+      "redis://192.168.10.48:6383",
+      "redis://192.168.10.48:6384"
+    ],
+    "scanInterval": 2000,
+    "pingConnectionInterval": 0,
+    "keepAlive": false,
+    "tcpNoDelay": false
+  },
+  "threads": 32,
+  "nettyThreads": 64,
+  "codec": {
+    "class":"org.redisson.codec.JsonJacksonCodec"
+  },
+  "transportMode": "NIO"
+}

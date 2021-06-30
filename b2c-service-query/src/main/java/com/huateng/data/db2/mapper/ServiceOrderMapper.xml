@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huateng.data.db2.mapper.ServiceOrderMapper">
+    <resultMap id="BaseResultMap" type="com.huateng.data.model.db2.ServiceOrder">
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="channel" property="channel" jdbcType="VARCHAR"/>
+        <result column="pos_id" property="posId" jdbcType="VARCHAR" />
+        <result column="station_id" property="stationId" jdbcType="VARCHAR" />
+        <result column="req_serial_no" jdbcType="VARCHAR" property="reqSerialNo"/>
+        <result column="repair_serial_no" jdbcType="VARCHAR" property="repairSerialNo"/>
+        <result column="target_serial_no" jdbcType="VARCHAR" property="targetSerialNo"/>
+        <result column="channel_date" jdbcType="TIMESTAMP" property="channelDate"/>
+        <result column="business_date" jdbcType="DATE" property="businessDate"/>
+        <result column="host_date" jdbcType="TIMESTAMP" property="hostDate"/>
+        <result column="number" jdbcType="DECIMAL" property="number"/>
+        <result column="returnable_number" jdbcType="DECIMAL" property="returnableNumber"/>
+        <result column="order_price" property="orderPrice" jdbcType="DECIMAL" />
+        <result column="returnable_price" property="returnablePrice" jdbcType="DECIMAL" />
+        <result column="status" jdbcType="SMALLINT" property="status"/>
+        <result column="order_type" jdbcType="SMALLINT" property="orderType"/>
+        <result column="valid_before" jdbcType="DECIMAL" property="validBefore"/>
+        <result column="operate" jdbcType="SMALLINT" property="operate"/>
+        <result column="valid_after" jdbcType="DECIMAL" property="validAfter"/>
+        <result column="cust_id" jdbcType="VARCHAR" property="custId"/>
+        <result column="acct_id" jdbcType="VARCHAR" property="acctId"/>
+        <result column="mall_id" jdbcType="VARCHAR" property="mallId"/>
+        <result column="shift_id" jdbcType="VARCHAR" property="shiftId" />
+        <result column="list_no" jdbcType="VARCHAR" property="listNo" />
+    </resultMap>
+
+    <resultMap id="orderTxnInfo" type="com.huateng.data.model.db2.ServiceOrderTxnInfo">
+        <id column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="host_date" jdbcType="TIMESTAMP" property="hostDate"/>
+        <result column="total_number" jdbcType="DECIMAL" property="number"/>
+        <result column="order_type" jdbcType="SMALLINT" property="orderType"/>
+        <result column="operate" jdbcType="SMALLINT" property="operate"/>
+        <result column="station_id" jdbcType="VARCHAR" property="stationId"/>
+        <result column="station_name" jdbcType="VARCHAR" property="stationName"/>
+    </resultMap>
+
+    <select id="getOrderInfo" parameterType="com.huateng.data.vo.params.OrderInfo" resultMap="BaseResultMap">
+        select * from service_order
+        <where>
+            <if test="custId != null">
+                and cust_id = #{custId}
+            </if>
+            <if test="orderType != null">
+                and order_type = #{orderType}
+            </if>
+            <if test="channel != null">
+                and channel = #{channel}
+            </if>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+            <if test="reqSerialNo != null">
+                and req_serial_no = #{reqSerialNo}
+            </if>
+        </where>
+    </select>
+
+
+    <select id="queryOrderById"  resultMap="BaseResultMap">
+        select * from service_order where id = #{id}
+    </select>
+
+    <select id="queryTxnInfo" parameterType="com.huateng.data.vo.params.MemberPointsTxnParams" resultMap="orderTxnInfo">
+        select ts1.*,ts2.name station_name from (
+            select
+            id,extend(t1.host_date,year to second) host_date,t1.order_type,t1.operate,t1.number total_number,t1.station_id
+            from service_order t1
+            where
+            <![CDATA[ t1.number > 0 ]]>
+            and t1.status in (1,2,3,4)
+            and t1.cust_id = #{custId}
+            <![CDATA[ and t1.host_date >= #{beginDate} ]]>
+            <![CDATA[ and t1.host_date < #{endDate} ]]>
+            union all
+            select
+            concat(pk_txn_detail,'') id,
+            extend(to_date(t2.txn_date||t2.txn_time,'%Y%m%d%H%M%S'),year to second) host_date,
+            decode(t2.txn_code,'3011',0,'3021',1,'4011',2,'2021',3, '9002',4) order_type,
+            decode(t2.bonus_cd_flag, 'd',1,0) operate,
+            t2.txn_bonus total_number,
+            t2.station_id
+            from tbl_txn_detail t2
+            <![CDATA[  where t2.txn_bonus > 0 ]]>
+            and t2.txn_status = 0
+            and t2.cust_id = #{custId}
+            <![CDATA[  and t2.txn_date >= to_char(#{beginDate},'%Y%m%d')  ]]>
+            <![CDATA[  and t2.txn_date <= to_char(#{endDate},'%Y%m%d') ]]>
+            union all
+            select
+            concat(t3.pk_bonus_detail,'') id,
+            extend(to_date(t3.txn_date||t3.txn_time,'%Y%m%d%H%M%S'),year to second) host_date,
+            3 order_type,
+            decode(t3.bonus_cd_flag, 'd',1,0) operate,
+            t3.txn_bonus total_number,
+            t3.station_id
+            from tbl_bonus_detail t3
+            where t3.txn_code = '2021'
+            and t3.cust_id = #{custId}
+            <![CDATA[  and t3.txn_date >= to_char(#{beginDate},'%Y%m%d')  ]]>
+            <![CDATA[  and t3.txn_date <= to_char(#{endDate},'%Y%m%d') ]]>
+        ) ts1 join station ts2 on ts1.station_id = ts2.stationid
+        order by ts1.host_date desc
+    </select>
+</mapper>

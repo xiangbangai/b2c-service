@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huateng.data.db2.mapper.core.ServiceInterfaceInfoMapper">
+    <resultMap id="BaseResultMap" type="com.huateng.data.model.db2.ServiceInterfaceInfo">
+        <id column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="url" jdbcType="VARCHAR" property="url"/>
+        <result column="service_name" jdbcType="VARCHAR" property="serviceName"/>
+        <result column="is_open" jdbcType="SMALLINT" property="isOpen"/>
+        <result column="service_type" jdbcType="SMALLINT" property="serviceType"/>
+        <result column="create_date_time" jdbcType="TIMESTAMP" property="createDateTime"/>
+        <result column="update_date_time" jdbcType="TIMESTAMP" property="updateDateTime"/>
+        <result column="operator" jdbcType="VARCHAR" property="operator"/>
+    </resultMap>
+
+    <select id="getList" resultMap="BaseResultMap">
+        select * from service_interface_info
+    </select>
+</mapper>

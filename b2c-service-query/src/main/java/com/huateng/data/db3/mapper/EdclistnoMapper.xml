@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huateng.data.db3.mapper.EdclistnoMapper">
+    <resultMap id="BaseResultMap" type="com.huateng.data.model.db3.Edclistno">
+        <result column="shopid" jdbcType="VARCHAR" property="shopid"/>
+        <result column="seqno" jdbcType="VARCHAR" property="seqno"/>
+        <result column="flag" jdbcType="INTEGER" property="flag"/>
+        <result column="dt" jdbcType="TIMESTAMP" property="dt"/>
+        <result column="time" jdbcType="TIMESTAMP" property="time"/>
+        <result column="listno" jdbcType="INTEGER" property="listno"/>
+        <result column="sublistno" jdbcType="INTEGER" property="sublistno"/>
+        <result column="pos_id" jdbcType="VARCHAR" property="posId"/>
+        <result column="shiftid" jdbcType="INTEGER" property="shiftid"/>
+        <result column="workdate" jdbcType="TIMESTAMP" property="workdate"/>
+        <result column="taxtype" jdbcType="VARCHAR" property="taxtype"/>
+        <result column="payposid" jdbcType="VARCHAR" property="payposid"/>
+    </resultMap>
+
+    <select id="queryInfo" parameterType="com.huateng.data.model.db3.Edclistno" resultMap="BaseResultMap">
+        select * from edclistno where shopid=#{shopid} and listNo=#{listno} and pos_id=#{posId} and shiftid=#{shiftid} and workdate=#{workdate}
+    </select>
+</mapper>

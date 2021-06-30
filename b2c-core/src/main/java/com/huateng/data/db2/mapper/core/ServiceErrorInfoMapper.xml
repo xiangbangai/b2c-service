@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huateng.data.db2.mapper.core.ServiceErrorInfoMapper">
+    <resultMap id="BaseResultMap" type="com.huateng.data.model.db2.ServiceErrorInfo">
+        <result column="error_code" jdbcType="VARCHAR" property="errorCode"/>
+        <result column="error_msg" jdbcType="VARCHAR" property="errorMsg"/>
+        <result column="error_type" jdbcType="INTEGER" property="errorType"/>
+    </resultMap>
+
+    <select id="getAll" resultMap="BaseResultMap"><![CDATA[
+        select * from service_error_info
+    ]]></select>
+</mapper>

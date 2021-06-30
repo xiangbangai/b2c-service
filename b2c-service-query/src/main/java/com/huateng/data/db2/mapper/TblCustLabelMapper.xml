@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.huateng.data.db2.mapper.TblCustLabelMapper">
+    <resultMap id="BaseResultMap" type="com.huateng.data.model.db2.TblCustLabel">
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="cust_id" property="custId" jdbcType="VARCHAR"/>
+        <result column="label_id" property="labelId" jdbcType="VARCHAR"/>
+        <result column="create_date" property="createDate" jdbcType="VARCHAR"/>
+        <result column="create_time" property="createTime" jdbcType="VARCHAR"/>
+        <result column="create_user" property="createUser" jdbcType="VARCHAR"/>
+        <result column="status" property="status" jdbcType="VARCHAR"/>
+        <result column="batch_id" property="batchId" jdbcType="VARCHAR"/>
+        <result column="eff_date" property="effDate" jdbcType="VARCHAR"/>
+        <result column="exp_date" property="expDate" jdbcType="VARCHAR"/>
+        <result column="label_type" property="labelType" jdbcType="VARCHAR"/>
+        <result column="label_level" property="labelLevel" jdbcType="INTEGER"/>
+        <result column="usable_date" property="usableDate" jdbcType="VARCHAR"/>
+        <result column="valid_days" property="validDays" jdbcType="INTEGER"/>
+        <result column="renewal_log" property="renewalLog" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="queryCustLabel" resultType="java.lang.String">
+        <![CDATA[
+        select label_id from tbl_label_info where label_id in (
+            select label_id from tbl_cust_label where (
+                (decode(eff_date, '',0,null,0) = 0 and decode(exp_date, '',0,null,0) = 0) or (eff_date <= #{expDate} and exp_date >= #{expDate})
+            ) and status='01' and cust_id = #{custId}
+        ) and status = '01'
+        ]]>
+    </select>
+
+    <select id="getInfo" parameterType="com.huateng.data.vo.params.TblCustLabelParams" resultMap="BaseResultMap">
+        select * from tbl_cust_label
+        <where>
+            <if test="labelType != null">
+                and label_type = #{labelType}
+            </if>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+            <if test="custId != null">
+                and cust_id = #{custId}
+            </if>
+            <if test="dateBetween != null">
+                <![CDATA[
+                    and usable_date <= #{dateBetween} and exp_date >= #{dateBetween}
+                ]]>
+            </if>
+        </where>
+        order by label_level desc
+    </select>
+
+    <insert id="insertSelective" parameterType="com.huateng.data.model.db2.TblCustLabel">
+        insert into tbl_cust_label
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="custId != null">
+                cust_id,
+            </if>
+            <if test="labelId != null">
+                label_id,
+            </if>
+            <if test="createDate != null">
+                create_date,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="createUser != null">
+                create_user,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="batchId != null">
+                batch_id,
+            </if>
+            <if test="effDate != null">
+                eff_date,
+            </if>
+            <if test="expDate != null">
+                exp_date,
+            </if>
+            <if test="labelType != null">
+                label_type,
+            </if>
+            <if test="labelLevel != null">
+                label_level,
+            </if>
+            <if test="usableDate != null">
+                usable_date,
+            </if>
+            <if test="validDays != null">
+                valid_days,
+            </if>
+            <if test="renewalLog != null">
+                renewal_log,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="custId != null">
+                #{custId,jdbcType=VARCHAR},
+            </if>
+            <if test="labelId != null">
+                #{labelId,jdbcType=VARCHAR},
+            </if>
+            <if test="createDate != null">
+                #{createDate,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="createUser != null">
+                #{createUser,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="batchId != null">
+                #{batchId,jdbcType=VARCHAR},
+            </if>
+            <if test="effDate != null">
+                #{effDate,jdbcType=VARCHAR},
+            </if>
+            <if test="expDate != null">
+                #{expDate,jdbcType=VARCHAR},
+            </if>
+            <if test="labelType != null">
+                #{labelType,jdbcType=VARCHAR},
+            </if>
+            <if test="labelLevel != null">
+                #{labelLevel,jdbcType=INTEGER},
+            </if>
+            <if test="usableDate != null">
+                #{usableDate,jdbcType=VARCHAR},
+            </if>
+            <if test="validDays != null">
+                #{validDays,jdbcType=INTEGER},
+            </if>
+            <if test="renewalLog != null">
+                #{renewalLog,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.huateng.data.model.db2.TblCustLabel">
+        update tbl_cust_label
+        <set>
+            <if test="custId != null">
+                cust_id = #{custId,jdbcType=VARCHAR},
+            </if>
+            <if test="labelId != null">
+                label_id = #{labelId,jdbcType=VARCHAR},
+            </if>
+            <if test="createDate != null">
+                create_date = #{createDate,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="createUser != null">
+                create_user = #{createUser,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="batchId != null">
+                batch_id = #{batchId,jdbcType=VARCHAR},
+            </if>
+            <if test="effDate != null">
+                eff_date = #{effDate,jdbcType=VARCHAR},
+            </if>
+            <if test="expDate != null">
+                exp_date = #{expDate,jdbcType=VARCHAR},
+            </if>
+            <if test="labelType != null">
+                label_type = #{labelType,jdbcType=VARCHAR},
+            </if>
+            <if test="labelLevel != null">
+                label_level = #{labelLevel,jdbcType=INTEGER},
+            </if>
+            <if test="usableDate != null">
+                usable_date = #{usableDate,jdbcType=VARCHAR},
+            </if>
+            <if test="validDays != null">
+                valid_days = #{validDays,jdbcType=INTEGER},
+            </if>
+            <if test="renewalLog != null">
+                renewal_log = #{renewalLog,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+
+</mapper>

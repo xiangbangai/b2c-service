@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.huateng.data.db2.mapper.ServiceOrderDetailMapper">
+    <resultMap id="BaseResultMap" type="com.huateng.data.model.db2.ServiceOrderDetail">
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <id column="order_id" property="orderId" jdbcType="VARCHAR"/>
+        <result column="goods_id" property="goodsId" jdbcType="VARCHAR"/>
+        <result column="total_price" property="totalPrice" jdbcType="DECIMAL"/>
+        <result column="unit_price" property="unitPrice" jdbcType="DECIMAL"/>
+        <result column="middle_type" property="middleType" jdbcType="VARCHAR"/>
+        <result column="lit_type" property="litType" jdbcType="VARCHAR"/>
+        <result column="number" property="number" jdbcType="DECIMAL"/>
+        <result column="returnable_number" property="returnableNumber" jdbcType="DECIMAL"/>
+        <result column="goods_name" property="goodsName" jdbcType="VARCHAR"/>
+        <result column="goods_type" property="goodsType" jdbcType="SMALLINT"/>
+        <result column="discount_type" property="discountType" jdbcType="VARCHAR"/>
+        <result column="delivery" property="delivery" jdbcType="SMALLINT"/>
+        <result column="delivery_date" property="deliveryDate" jdbcType="DATE"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,order_id, goods_id, total_price, unit_price, middle_type,lit_type, number, returnable_number,
+        goods_name, goods_type, discount_type
+    </sql>
+
+    <select id="queryOrderDetailByOrderId" resultMap="BaseResultMap">
+        select * from service_order_detail where order_id=#{orderId}
+    </select>
+
+    <select id="queryOrderDetailByOrderList" resultMap="BaseResultMap">
+        select
+        ts.id,ts.order_id,ts.goods_id,ts.total_price,ts.unit_price,ts.middle_type,ts.lit_type,
+        ts.number,ts.returnable_number,trim(ts.goods_name) goods_name,ts.goods_type,
+        ts.discount_type,ts.delivery,ts.delivery_date
+        from (
+            select
+            t2.*
+            from service_order t1 join service_order_detail t2 on t1.id = t2.order_id
+            where
+            t2.order_id in
+            <foreach collection="ids" open="(" close=")" separator="," item="id" index="index">#{id}
+            </foreach>
+            and t1.cust_id = #{custId}
+            <![CDATA[ and t1.host_date >= #{beginDate} ]]>
+            <![CDATA[ and t1.host_date < #{endDate} ]]>
+            union all
+            select
+            concat(t3.pk_bonus_detail,'') id,
+            concat(t3.pk_bonus_detail,'') order_id,
+            concat(t3.pk_bonus_detail,'') goods_id,
+            t3.txn_bonus total_price,
+            t3.txn_bonus unit_price,
+            '' middle_type,
+            '' lit_type,
+            1 number,
+            1 returnable_number,
+            t3.detail_desc  goods_name,
+            2 goods_type,
+            '' discount_type,
+            0 delivery,
+            today delivery_date
+            from tbl_bonus_detail t3
+            where t3.pk_bonus_detail in
+            <foreach collection="ids" open="(" close=")" separator="," item="id" index="index">#{id}
+            </foreach>
+            and t3.cust_id = #{custId}
+            <![CDATA[  and t3.txn_date >= to_char(#{beginDate},'%Y%m%d') ]]>
+            <![CDATA[  and t3.txn_date <= to_char(#{endDate},'%Y%m%d') ]]>
+        ) ts order by ts.order_id
+    </select>
+</mapper>

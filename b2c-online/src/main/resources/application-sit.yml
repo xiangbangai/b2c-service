@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: b2c-online
+  cloud:
+    consul:
+      host: 127.0.0.1
+      port: 8500
+      discovery:
+        prefer-ip-address: true
+        instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
+        health-check-path: /actuator/health
+        health-check-interval: 10s
+        acl-token:
+        register: true
+        deregister: true
+sign:
+  private: MIIEwAIBADANBgkqhkiG9w0BAQEFAASCBKowggSmAgEAAoIBAQDYJXtf7+f/4yu8R3KbLFzNda7zEE1XcVGAQGRAsML5rNI0a5JGA7H0/hz4024tuRG2HusYIKJNmjYI1ldcbQSWzh2iFK7bYhTZJHfT6QYleQF15RFn3N3gBO4xl275tfy8c0xUtBhh6NIU9J4J+TE0zeb0lNS2qCC41WasP8GQGVPHwglqKXRQQQtHEtOwBsRw7+ksXZKUxK1f4TNrVhKAPJWP6z8o/GH6ciU6ukhiwnQQgkgfe7VE4Hic9lC5brW37KbfotT/UFRuBj+BsM8/jGR3yLk2KEZKMw2Zht194nQgzYh/umyQK6AY7sQlQ+uM+ISnsg+fzExnP1mwC6pfAgMBAAECggEBAJi+fB5C4jcxaVHHR9Uil35WQMjh51X47XhtiKsyfsaD+5QxxI+XwuV3wi+Q8lZ7Z2nFFavaO/gNF0xNdDULkWekxsooRZ0hBcyhedCV5tMKXR7cPt2f9md99Hm1IyZyFeVysSlWj7h5GCTY7OntYHmJXEHQ/zUJQP59R+5Hq9jQ0KzdnMOVYFOvQ6TtdjdUGhsa243k3sWxXBy9D7/2IY5M+jmW/HqmsWtAbe5K56BDPvO7ycWEt5xtMccbX5MjtSQYl+FKJ1h/fy4zqva68JSiQw33Wh+gM62pTP0MJzDFeDfXFRn62Pbu8UknkUWjSrB7BOjZRgv0e13qE9H2u3kCgYEA7D3BrKbMLfv54KQR0GQzP2Z2PBfpg+EFt5QEJz63um5kUBqfBAWAVBWxfXGaVs1PeRZF5M7m3r1G5bhg7jhd2iT2C9Olr6gwHct2N1qVC1ZgUQuYBvRoBPzc4NuK748qY4ad9knxQAjh7rcp4sEcl+1pfkaisRFN63eTx4fFbFsCgYEA6jl31/YZ+gPGtW2mor8lnQB/iB5AXuHpacl9vOWxyYslKbZGC5TCx5PDTsJyxnqE9Hi7JlUgvxvB5BpSc+hi5C/qZTKSRB62QxW4VpZYtgANQt1jR2iJUe93iSrT0HRF+wxmrRiVcmjgIB8VuCSh/lP7OcO1z8nRi5RaCOEGqU0CgYEAw3jaDxS4r3fmKzU2tDqkmNocDN8wTfncNCkaQqrHdVAwWoOcfcRbibeldAmSzi31i1idnpSAPV9aEWw9b/9d0MlyeRi36J9+qLiYaXbfClF/QrAYK/EBPNdJoBioXk4UoeNaQtat8vEmmNIfq0tkcGV2O5EQvvh1g9cehSPXfC8CgYEAv5knCchNU5FHOR5rU3IdaKMBr+1fJr6SW3DxpFYY6w8h5U8vWUXlV7Dt8T1q+iU7IWipXx//25TvNJK7pAkS7CquCP4nXAXrflEELABsrOS59Fp5Xe6LdjT3iYM5JaoXnNd2Hl6f0aksvdnvwGRnB07XkVchIMqs2QsP43eAJXkCgYEAwU1t5vXpDupbT2i3WFIzNFjDb4hfbyjPlAILzsKuyMsLy5WnhpMe3abpRBpynk6N36RkoUlfOcsFmgdXr2REnztiZSdJFZFHsJea0yDXOrd3L9a3avAc503Sm1hvnzuOV1yTooRNLsoStyiBHYOf2/GKMr+4VG7h0N2b+jXpxic=
+  isSign: false
+

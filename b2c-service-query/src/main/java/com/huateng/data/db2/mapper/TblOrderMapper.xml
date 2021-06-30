@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.huateng.data.db2.mapper.TblOrderMapper" >
+  <resultMap id="BaseResultMap" type="com.huateng.data.model.db2.TblOrder" >
+    <id column="order_id" property="orderId" jdbcType="VARCHAR" />
+    <result column="chnl_no" property="chnlNo" jdbcType="VARCHAR" />
+    <result column="station_id" property="stationId" jdbcType="VARCHAR" />
+    <result column="pos_id" property="posId" jdbcType="VARCHAR" />
+    <result column="acq_ssn" property="acqSsn" jdbcType="VARCHAR" />
+    <result column="txn_date" property="txnDate" jdbcType="VARCHAR" />
+    <result column="txn_time" property="txnTime" jdbcType="VARCHAR" />
+    <result column="ref_txn_ssn" property="refTxnSsn" jdbcType="VARCHAR" />
+    <result column="ora_order_id" property="oraOrderId" jdbcType="VARCHAR" />
+    <result column="cust_name" property="custName" jdbcType="VARCHAR" />
+    <result column="acct_id" property="acctId" jdbcType="VARCHAR" />
+    <result column="order_bonus" property="orderBonus" jdbcType="DECIMAL" />
+    <result column="order_amount" property="orderAmount" jdbcType="DECIMAL" />
+    <result column="order_time" property="orderTime" jdbcType="VARCHAR" />
+    <result column="order_status" property="orderStatus" jdbcType="VARCHAR" />
+    <result column="order_desc" property="orderDesc" jdbcType="VARCHAR" />
+    <result column="check_type" property="checkType" jdbcType="VARCHAR" />
+    <result column="order_cust" property="orderCust" jdbcType="VARCHAR" />
+    <result column="order_addr" property="orderAddr" jdbcType="VARCHAR" />
+    <result column="order_phone" property="orderPhone" jdbcType="VARCHAR" />
+    <result column="order_cancel" property="orderCancel" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    <result column="order_post" property="orderPost" jdbcType="VARCHAR" />
+    <result column="cust_id" property="custId" jdbcType="VARCHAR" />
+    <result column="bp_plan_type" property="bpPlanType" jdbcType="VARCHAR" />
+    <result column="bonus_ssn" property="bonusSsn" jdbcType="VARCHAR" />
+    <result column="to_rms_time" property="toRmsTime" jdbcType="VARCHAR" />
+    <result column="return_time" property="returnTime" jdbcType="VARCHAR" />
+
+    <result column="txn_code" property="txnCode" jdbcType="VARCHAR" />
+    <result column="bonus_cd_flag" property="bonusCDFlag" jdbcType="VARCHAR" />
+  </resultMap>
+
+
+
+
+
+
+  <select id="queryTblOrderInfo" resultMap="BaseResultMap">
+    select t1.*,t2.txn_code,t2.bonus_cd_flag from tbl_order t1 left join tbl_txn_detail t2 on t1.acq_ssn = t2.acq_ssn
+    where t1.acct_id=#{acctId} and t1.acq_ssn=#{acqSsn}
+  </select>
+
+  <select id="queryTblOrderByOrderId" resultMap="BaseResultMap">
+    select * from tbl_order where order_id=#{orderId}
+  </select>
+</mapper>

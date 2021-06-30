@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.huateng.data.db2.mapper.TblUserCarMapper" >
+    <resultMap id="BaseResultMap" type="com.huateng.data.model.db2.TblUserCar" >
+        <id column="id" property="id" jdbcType="VARCHAR" />
+        <result column="cust_id" property="custId" jdbcType="VARCHAR" />
+        <result column="plate_number" property="plateNumber" jdbcType="VARCHAR" />
+        <result column="plate_number_type" property="plateNumberType" jdbcType="INTEGER" />
+        <result column="car_frame_num" property="carFrameNum" jdbcType="VARCHAR" />
+        <result column="engine_number" property="engineNumber" jdbcType="VARCHAR" />
+        <result column="car_brand_name" property="carBrandName" jdbcType="VARCHAR" />
+        <result column="price" property="price" jdbcType="VARCHAR" />
+        <result column="displacement" property="displacement" jdbcType="VARCHAR" />
+        <result column="oil_type" property="oilType" jdbcType="INTEGER" />
+        <result column="logo" property="logo" jdbcType="VARCHAR" />
+        <result column="car_serial_name" property="carSerialName" jdbcType="VARCHAR" />
+        <result column="is_default" property="isDefault" jdbcType="INTEGER" />
+        <result column="status" property="status" jdbcType="VARCHAR" />
+        <result column="open_id" property="openId" jdbcType="VARCHAR" />
+        <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+        <result column="non_inductive_pay_type" property="nonInductivePayType" jdbcType="VARCHAR" />
+        <result column="default_non_inductive_pay_type" property="defaultNonInductivePayType" jdbcType="VARCHAR" />
+        <result column="license_plate_type" property="licensePlateType" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <select id="queryUserCarsByPlateNumber" resultMap="BaseResultMap">
+        select * from tbl_user_car
+        <where>
+            status = '0'
+            <if test="plateNumber != null">
+                and plate_number = #{plateNumber}
+            </if>
+        </where>
+        order by create_time desc
+    </select>
+</mapper>

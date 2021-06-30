@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package name="txnBonusActivity">
+	<activity-group name="tb_1" period-start="20000101010101" period-end="20990101010101" valid-date="2" bonus-type="1">
+		<rule-group name="tb_1_1" conflict-policy="max" priority="1">
+			<rule name="tb_1_1_1" priority="0">
+				<conditions type="and">
+					<condition><![CDATA[createDate not in ("10","333")]]></condition>
+				</conditions>
+				<result>
+					<status>1</status>
+					<bonus-point><![CDATA[9999]]></bonus-point>
+				</result>
+			</rule>
+		</rule-group>
+		<rule-group name="rule2" conflict-policy="max" priority="1">
+			<rule name="rule2" priority="0">
+				<conditions type="and">
+					<condition><![CDATA[createDate in ("10","333")]]></condition>
+				</conditions>
+				<result>
+					<status>1</status>
+					<bonus-point><![CDATA[9999]]></bonus-point>
+				</result>
+			</rule>
+		</rule-group>		
+		<rule-group name="tb_1_2" conflict-policy="max" priority="1">
+			<rule name="rule2" priority="0">
+				<conditions type="and">
+					<condition><![CDATA[txnAmount in (101,333)]]></condition>
+				</conditions>
+				<result>
+					<status>1</status>
+					<bonus-point><![CDATA[9999]]></bonus-point>
+				</result>
+			</rule>
+		</rule-group>	
+		<rule-group name="tb_1_3" conflict-policy="max" priority="1">
+			<rule name="rule4" priority="0">
+				<conditions type="and">
+					<condition><![CDATA[txnAmount not in (111,3,33)]]></condition>
+				</conditions>
+				<result>
+					<status>1</status>
+					<bonus-point><![CDATA[9999]]></bonus-point>
+				</result>
+			</rule>
+			<rule name="rule5" priority="0">
+				<conditions type="and">
+					<condition><![CDATA[txnAmount==0]]></condition>
+				</conditions>
+				<result>
+					<status>1</status>
+					<bonus-point><![CDATA[9999]]></bonus-point>
+				</result>
+			</rule>			
+			<rule name="rule6" priority="0">
+				<conditions type="and">
+					<condition><![CDATA[txnAmount!=0]]></condition>
+				</conditions>
+				<result>
+					<status>1</status>
+					<bonus-point><![CDATA[9999]]></bonus-point>
+				</result>
+			</rule>	
+			<rule name="rule7" priority="0">
+				<conditions type="and">
+					<condition><![CDATA[txnAmount<=0]]></condition>
+				</conditions>
+				<result>
+					<status>1</status>
+					<bonus-point><![CDATA[9999]]></bonus-point>
+				</result>
+			</rule>		
+			<rule name="rule8" priority="0">
+				<conditions type="and">
+					<condition><![CDATA[txnAmount>=0]]></condition>
+				</conditions>
+				<result>
+					<status>1</status>
+					<bonus-point><![CDATA[9999]]></bonus-point>
+				</result>
+			</rule>			
+			<rule name="rule9" priority="0">
+				<conditions type="and">
+					<condition><![CDATA[txnAmount>=0]]></condition>
+				</conditions>
+				<result>
+					<status>1</status>
+					<bonus-point><![CDATA[9999]]></bonus-point>
+				</result>
+			</rule>
+			<rule name="rule99" priority="0">
+				<conditions type="and">
+					<condition><![CDATA[txnAmount>0]]></condition>
+				</conditions>
+				<result>
+					<status>1</status>
+					<bonus-point><![CDATA[9999]]></bonus-point>
+				</result>
+			</rule>			
+			<rule name="rule919" priority="0">
+				<conditions type="and">
+					<condition><![CDATA[txnAmount<0]]></condition>
+				</conditions>
+				<result>
+					<status>1</status>
+					<bonus-point><![CDATA[9999]]></bonus-point>
+				</result>
+			</rule>					
+			<rule name="rule10" priority="0">
+				<conditions type="and">
+					<condition><![CDATA[txnKey >= "bb"]]></condition>
+				</conditions>
+				<result>
+					<status>1</status>
+					<bonus-point><![CDATA[88888]]></bonus-point>
+				</result>
+			</rule>															
+		</rule-group>		
+		
+		<rule-group name="aaaaa" conflict-policy="priority" priority="1">
+			<rule name="rule1" priority="0">
+				<conditions type="and">
+					<condition><![CDATA[createDate not in ("10","333")]]></condition>
+				</conditions>
+				<result>
+					<status>1</status>
+					<bonus-point><![CDATA[55555]]></bonus-point>
+				</result>
+			</rule>
+			<rule name="rule1" priority="1">
+				<conditions type="and">
+					<condition><![CDATA[createDate not in ("10","333")]]></condition>
+				</conditions>
+				<result>
+					<status>1</status>
+					<bonus-point><![CDATA[44444]]></bonus-point>
+				</result>
+			</rule>			
+		</rule-group>			
+		
+				
+	</activity-group>
+	
+</package>
+
+

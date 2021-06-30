@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.huateng.data.db2.mapper.ServiceBonusDetailMapper">
+    <resultMap id="BaseResultMap" type="com.huateng.data.model.db2.ServiceBonusDetail">
+        <id column="order_id" property="orderId" jdbcType="VARCHAR"/>
+        <id column="order_serial" property="orderSerial" jdbcType="INTEGER"/>
+        <result column="operate" property="operate" jdbcType="SMALLINT"/>
+        <result column="valid_date" property="validDate" jdbcType="VARCHAR"/>
+        <result column="number" property="number" jdbcType="DECIMAL"/>
+        <result column="returnable_number" property="returnableNumber" jdbcType="DECIMAL"/>
+        <result column="rule_id" property="ruleId" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+    order_id, order_serial, operate, valid_date, number, rule_id
+  </sql>
+
+    <insert id="insert" parameterType="com.huateng.data.model.db2.ServiceBonusDetail">
+        insert into service_bonus_detail
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="orderId != null">
+                order_id,
+            </if>
+            <if test="orderSerial != null">
+                order_serial,
+            </if>
+            <if test="operate != null">
+                operate,
+            </if>
+            <if test="validDate != null and validDate != ''">
+                valid_date,
+            </if>
+            <if test="number != null">
+                number,
+            </if>
+            <if test="returnableNumber != null">
+                returnable_number,
+            </if>
+            <if test="ruleId != null">
+                rule_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="orderId != null">
+                #{orderId,jdbcType=VARCHAR},
+            </if>
+            <if test="orderSerial != null">
+                #{orderSerial,jdbcType=INTEGER},
+            </if>
+            <if test="operate != null">
+                #{operate,jdbcType=SMALLINT},
+            </if>
+            <if test="validDate != null">
+                #{validDate,jdbcType=VARCHAR},
+            </if>
+            <if test="number != null">
+                #{number,jdbcType=DECIMAL},
+            </if>
+            <if test="returnableNumber != null">
+                #{returnableNumber,jdbcType=DECIMAL},
+            </if>
+            <if test="ruleId != null">
+                #{ruleId,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.huateng.data.model.db2.ServiceBonusDetail">
+        update service_bonus_detail
+        <set>
+            <if test="operate != null">
+                operate = #{operate,jdbcType=SMALLINT},
+            </if>
+            <if test="validDate != null">
+                valid_date = #{validDate,jdbcType=VARCHAR},
+            </if>
+            <if test="number != null">
+                number = #{number,jdbcType=DECIMAL},
+            </if>
+            <if test="returnableNumber != null">
+                returnable_number = #{returnableNumber,jdbcType=DECIMAL},
+            </if>
+            <if test="ruleId != null">
+                rule_id = #{ruleId,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where order_id = #{orderId,jdbcType=BIGINT}
+        and order_serial = #{orderSerial,jdbcType=INTEGER}
+    </update>
+
+    <update id="updateReturnableNumber">
+    update service_bonus_detail set returnable_number = #{returnableNumber} where order_id = #{orderId} and order_serial =#{orderSerial}
+    </update>
+
+    <update id="updateReturnableNumberToZeroByOrderId">
+        update service_bonus_detail set returnable_number = 0 where order_id = #{orderId}
+    </update>
+</mapper>

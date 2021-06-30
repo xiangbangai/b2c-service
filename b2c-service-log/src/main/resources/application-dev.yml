@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: b2c-service-log
+  cloud:
+    consul:
+      host: 192.168.10.85
+      port: 8500
+      discovery:
+        prefer-ip-address: true
+        instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
+        health-check-path: /actuator/health
+        health-check-interval: 10s
+        acl-token:
+        register: true
+        deregister: true
+swagger:
+  enabled: true

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.huateng.data.db2.mapper.TblAcctInfMapper" >
+    <resultMap id="BaseResultMap" type="com.huateng.data.model.db2.TblAcctInf" >
+        <id column="pk_acct_inf" property="pkAcctInf" jdbcType="INTEGER" />
+        <result column="cust_id" property="custId" jdbcType="VARCHAR" />
+        <result column="acct_id" property="acctId" jdbcType="VARCHAR" />
+        <result column="acct_type" property="acctType" jdbcType="VARCHAR" />
+        <result column="card_bank" property="cardBank" jdbcType="VARCHAR" />
+        <result column="card_prd" property="cardPrd" jdbcType="VARCHAR" />
+        <result column="ext_coulmn1" property="extCoulmn1" jdbcType="VARCHAR" />
+        <result column="ext_coulmn2" property="extCoulmn2" jdbcType="VARCHAR" />
+        <result column="ext_coulmn3" property="extCoulmn3" jdbcType="VARCHAR" />
+        <result column="ext_coulmn4" property="extCoulmn4" jdbcType="DECIMAL" />
+        <result column="open_id" property="openId" jdbcType="VARCHAR" />
+        <result column="create_date" property="createDate" jdbcType="VARCHAR" />
+        <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    </resultMap>
+    <select id="queryTblAcctInfByCustId"  resultMap="BaseResultMap">
+        select * from tbl_acct_inf
+        <where>
+            <if test="custId != null">
+                and cust_Id = #{custId}
+            </if>
+            <if test="acctType != null">
+                and acct_type = #{acctType}
+            </if>
+        </where>
+    </select>
+</mapper>

@@ -1,0 +1,55 @@
+spring:
+  application:
+    name: b2c-service-member
+  cloud:
+    consul:
+      host: 127.0.0.1
+      port: 8500
+      discovery:
+        prefer-ip-address: true
+        instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
+        health-check-path: /actuator/health
+        health-check-interval: 10s
+        acl-token: 4caf7aa1-45d6-92f4-3d77-36d9b3cb5071
+        register: true
+        deregister: false
+  datasource:
+    db2:
+      ifxIFXHOST: 192.168.1.133
+      serverName: onb2cifmx
+      portNumber: 8000
+      databaseName: bppc_bpas
+      user: b2cu1
+      password: ENC(/h8GdbBJ1Cxocyv4DOvYSEnw7TdXGvIp)
+      ifxNEWCODESET: GB18030-2000,8859-1,819
+      ifxIFX_USE_STRENC: true
+      ifxDBDATE: Y4MD-
+      ifxDB_LOCALE: en_US.8859-1
+      ifxCLIENT_LOCALE: en_US.utf8
+      url: jdbc:informix-sqli://192.168.1.133:8000/bppc_bpas:informixserver=onb2cifmx;NEWCODESET=GB18030,819,819
+      minPoolSize: 10
+      maxPoolSize: 30
+      maxLifeTime: 20000
+      borrowConnectionTimeout: 30
+  jta:
+    atomikos:
+      properties:
+        log-base-dir: /root/logs/b2c-service-member
+        enable-logging: false
+        max-actives: 200
+server:
+  undertow:
+    max-http-post-size: 0
+    io-threads: 16
+    worker-threads: 128
+    buffer-size: 1024
+    direct-buffers: true
+feign:
+  compression:
+    request:
+      enabled: true
+      mime-types: application/json
+    response:
+      enabled: true
+swagger:
+  enabled: false

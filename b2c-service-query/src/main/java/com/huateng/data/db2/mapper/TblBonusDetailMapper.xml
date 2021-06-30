@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.huateng.data.db2.mapper.TblBonusDetailMapper" >
+  <resultMap id="BaseResultMap" type="com.huateng.data.model.db2.TblBonusDetail" >
+    <id column="pk_bonus_detail" property="pkBonusDetail" jdbcType="DECIMAL" />
+    <result column="cust_id" property="custId" jdbcType="VARCHAR" />
+    <result column="acct_id" property="acctId" jdbcType="VARCHAR" />
+    <result column="usage_key" property="usageKey" jdbcType="VARCHAR" />
+    <result column="txn_type" property="txnType" jdbcType="VARCHAR" />
+    <result column="txn_code" property="txnCode" jdbcType="VARCHAR" />
+    <result column="bonus_cd_flag" property="bonusCdFlag" jdbcType="VARCHAR" />
+    <result column="bonus_ssn" property="bonusSsn" jdbcType="VARCHAR" />
+    <result column="bp_plan_type" property="bpPlanType" jdbcType="VARCHAR" />
+    <result column="valid_date" property="validDate" jdbcType="VARCHAR" />
+    <result column="txn_bonus" property="txnBonus" jdbcType="DECIMAL" />
+    <result column="valid_bonus" property="validBonus" jdbcType="DECIMAL" />
+    <result column="bp_valid_bonus" property="bpValidBonus" jdbcType="DECIMAL" />
+    <result column="activity_id" property="activityId" jdbcType="VARCHAR" />
+    <result column="rule_id" property="ruleId" jdbcType="VARCHAR" />
+    <result column="bonus_ssn_ora" property="bonusSsnOra" jdbcType="VARCHAR" />
+    <result column="txn_code_ora" property="txnCodeOra" jdbcType="VARCHAR" />
+    <result column="txn_desc_ora" property="txnDescOra" jdbcType="VARCHAR" />
+    <result column="txn_amt_ora" property="txnAmtOra" jdbcType="DECIMAL" />
+    <result column="txn_cnt_ora" property="txnCntOra" jdbcType="DECIMAL" />
+    <result column="txn_date_ora" property="txnDateOra" jdbcType="VARCHAR" />
+    <result column="txn_date" property="txnDate" jdbcType="VARCHAR" />
+    <result column="txn_time" property="txnTime" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    <result column="stlm_date" property="stlmDate" jdbcType="VARCHAR" />
+    <result column="activity_nm" property="activityNm" jdbcType="VARCHAR" />
+    <result column="rule_nm" property="ruleNm" jdbcType="VARCHAR" />
+    <result column="channel_no" property="channelNo" jdbcType="VARCHAR" />
+    <result column="ext_coulmn1" property="extCoulmn1" jdbcType="VARCHAR" />
+    <result column="ext_coulmn2" property="extCoulmn2" jdbcType="VARCHAR" />
+    <result column="ext_coulmn3" property="extCoulmn3" jdbcType="VARCHAR" />
+    <result column="ext_coulmn4" property="extCoulmn4" jdbcType="DECIMAL" />
+    <result column="return_flag" property="returnFlag" jdbcType="VARCHAR" />
+    <result column="station_id" property="stationId" jdbcType="VARCHAR" />
+    <result column="pos_id" property="posId" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.huateng.data.model.db2.TblBonusDetail" extends="BaseResultMap" >
+    <result column="detail_desc" property="detailDesc" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    pk_bonus_detail, cust_id, acct_id, usage_key, txn_type, txn_code, bonus_cd_flag, 
+    bonus_ssn, bp_plan_type, valid_date, txn_bonus, valid_bonus, bp_valid_bonus, activity_id, 
+    rule_id, bonus_ssn_ora, txn_code_ora, txn_desc_ora, txn_amt_ora, txn_cnt_ora, txn_date_ora, 
+    txn_date, txn_time, create_date, create_time, stlm_date, activity_nm, rule_nm, channel_no, 
+    ext_coulmn1, ext_coulmn2, ext_coulmn3, ext_coulmn4, return_flag, station_id, pos_id
+  </sql>
+  <sql id="Blob_Column_List" >
+    detail_desc
+  </sql>
+
+  <select id="getByBonusSsn" resultMap="BaseResultMap">
+    select * from tbl_bonus_detail
+    where bonus_ssn = #{bonusSsn}
+        and txn_bonus <![CDATA[ > ]]> 0
+    order by valid_date desc
+  </select>
+
+</mapper>

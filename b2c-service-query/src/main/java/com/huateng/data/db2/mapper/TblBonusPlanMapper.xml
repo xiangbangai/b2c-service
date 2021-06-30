@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huateng.data.db2.mapper.TblBonusPlanMapper">
+    <resultMap id="BaseResultMap" type="com.huateng.data.model.db2.TblBonusPlan">
+        <id column="pk_bonus_plan" jdbcType="DECIMAL" property="pkBonusPlan"/>
+        <result column="usage_key" jdbcType="VARCHAR" property="usageKey"/>
+        <result column="cust_id" jdbcType="VARCHAR" property="custId"/>
+        <result column="acct_id" jdbcType="VARCHAR" property="acctId"/>
+        <result column="lock_status" jdbcType="VARCHAR" property="lockStatus"/>
+        <result column="bp_plan_type" jdbcType="VARCHAR" property="bpPlanType"/>
+        <result column="total_bonus" jdbcType="DECIMAL" property="totalBonus"/>
+        <result column="valid_bonus" jdbcType="DECIMAL" property="validBonus"/>
+        <result column="apply_bonus" jdbcType="DECIMAL" property="applyBonus"/>
+        <result column="expire_bonus" jdbcType="DECIMAL" property="expireBonus"/>
+        <result column="create_oper" jdbcType="VARCHAR" property="createOper"/>
+        <result column="create_date" jdbcType="VARCHAR" property="createDate"/>
+        <result column="create_time" jdbcType="VARCHAR" property="createTime"/>
+        <result column="modify_oper" jdbcType="VARCHAR" property="modifyOper"/>
+        <result column="modify_date" jdbcType="VARCHAR" property="modifyDate"/>
+        <result column="modify_time" jdbcType="VARCHAR" property="modifyTime"/>
+        <result column="ext_coulmn1" jdbcType="VARCHAR" property="extCoulmn1"/>
+        <result column="ext_coulmn2" jdbcType="VARCHAR" property="extCoulmn2"/>
+        <result column="ext_coulmn3" jdbcType="VARCHAR" property="extCoulmn3"/>
+        <result column="ext_coulmn4" jdbcType="DECIMAL" property="extCoulmn4"/>
+        <result column="valid_bonus2" jdbcType="DECIMAL" property="validBonus2"/>
+        <result column="expired_status" jdbcType="VARCHAR" property="expiredStatus" />
+    </resultMap>
+
+    <select id="queryCustIntegral" resultMap="BaseResultMap">
+        select t1.*, t2.valid_bonus valid_bonus2,t2.expired_status from tbl_bonus_plan t1 left join tbl_bonus_plan_detail t2
+        on (t1.cust_id = t2.cust_id and t1.bp_plan_type = t2.bp_plan_type
+        and expired_status = '0' and t2.valid_date = #{date})
+        where t1.bp_plan_type = #{integralType} and t1.cust_id = #{custId}
+    </select>
+
+    <select id="queryBonusPlanByCustId" resultMap="BaseResultMap">
+        select * from tbl_bonus_plan where bp_plan_type = #{bpPlanType} and cust_id=#{custId}
+    </select>
+
+</mapper>

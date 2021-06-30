@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.huateng.data.db2.mapper.ServiceOrderMapper">
+    <resultMap id="BaseResultMap" type="com.huateng.data.model.db2.ServiceOrder">
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="channel" property="channel" jdbcType="VARCHAR"/>
+        <result column="pos_id" property="posId" jdbcType="VARCHAR"/>
+        <result column="station_id" property="stationId" jdbcType="VARCHAR"/>
+        <result column="req_serial_no" property="reqSerialNo" jdbcType="VARCHAR"/>
+        <result column="repair_serial_no" property="repairSerialNo" jdbcType="VARCHAR"/>
+        <result column="target_serial_no" property="targetSerialNo" jdbcType="VARCHAR"/>
+        <result column="channel_date" property="channelDate" jdbcType="TIMESTAMP"/>
+        <result column="business_date" property="businessDate" jdbcType="DATE"/>
+        <result column="host_date" property="hostDate" jdbcType="TIMESTAMP"/>
+        <result column="number" property="number" jdbcType="DECIMAL"/>
+        <result column="returnable_number" property="returnableNumber" jdbcType="DECIMAL"/>
+        <result column="order_price" property="orderPrice" jdbcType="DECIMAL"/>
+        <result column="returnable_price" property="returnablePrice" jdbcType="DECIMAL"/>
+        <result column="status" property="status" jdbcType="SMALLINT"/>
+        <result column="order_type" property="orderType" jdbcType="SMALLINT"/>
+        <result column="valid_before" jdbcType="DECIMAL" property="validBefore"/>
+        <result column="operate" jdbcType="SMALLINT" property="operate"/>
+        <result column="valid_after" jdbcType="DECIMAL" property="validAfter"/>
+        <result column="cust_id" property="custId" jdbcType="VARCHAR"/>
+        <result column="acct_id" property="acctId" jdbcType="VARCHAR"/>
+        <result column="mall_id" property="mallId" jdbcType="VARCHAR"/>
+        <result column="shift_id" property="shiftId" jdbcType="VARCHAR"/>
+        <result column="list_no" property="listNo" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="com.huateng.data.model.db2.ServiceOrder" >
+        insert into service_order
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="channel != null" >
+                channel,
+            </if>
+            <if test="posId != null" >
+                pos_id,
+            </if>
+            <if test="stationId != null" >
+                station_id,
+            </if>
+            <if test="reqSerialNo != null" >
+                req_serial_no,
+            </if>
+            <if test="repairSerialNo != null" >
+                repair_serial_no,
+            </if>
+            <if test="targetSerialNo != null" >
+                target_serial_no,
+            </if>
+            <if test="channelDate != null" >
+                channel_date,
+            </if>
+            <if test="businessDate != null" >
+                business_date,
+            </if>
+            <if test="hostDate != null" >
+                host_date,
+            </if>
+            <if test="number != null" >
+                number,
+            </if>
+            <if test="returnableNumber != null" >
+                returnable_number,
+            </if>
+            <if test="orderPrice != null" >
+                order_price,
+            </if>
+            <if test="returnablePrice != null" >
+                returnable_price,
+            </if>
+            <if test="status != null" >
+                status,
+            </if>
+            <if test="orderType != null" >
+                order_type,
+            </if>
+            <if test="validBefore != null" >
+                valid_before,
+            </if>
+            <if test="operate != null">
+                operate,
+            </if>
+            <if test="validAfter != null" >
+                valid_after,
+            </if>
+            <if test="custId != null" >
+                cust_id,
+            </if>
+            <if test="acctId != null" >
+                acct_id,
+            </if>
+            <if test="mallId != null" >
+                mall_id,
+            </if>
+            <if test="shiftId != null" >
+                shift_id,
+            </if>
+            <if test="listNo != null" >
+                list_no,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="channel != null" >
+                #{channel,jdbcType=VARCHAR},
+            </if>
+            <if test="posId != null" >
+                #{posId,jdbcType=VARCHAR},
+            </if>
+            <if test="stationId != null" >
+                #{stationId,jdbcType=VARCHAR},
+            </if>
+            <if test="reqSerialNo != null" >
+                #{reqSerialNo,jdbcType=VARCHAR},
+            </if>
+            <if test="repairSerialNo != null" >
+                #{repairSerialNo,jdbcType=VARCHAR},
+            </if>
+            <if test="targetSerialNo != null" >
+                #{targetSerialNo,jdbcType=VARCHAR},
+            </if>
+            <if test="channelDate != null" >
+                #{channelDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="businessDate != null" >
+                #{businessDate,jdbcType=DATE},
+            </if>
+            <if test="hostDate != null" >
+                #{hostDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="number != null" >
+                #{number,jdbcType=DECIMAL},
+            </if>
+            <if test="returnableNumber != null" >
+                #{returnableNumber,jdbcType=DECIMAL},
+            </if>
+            <if test="orderPrice != null" >
+                #{orderPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="returnablePrice != null" >
+                #{returnablePrice,jdbcType=DECIMAL},
+            </if>
+            <if test="status != null" >
+                #{status,jdbcType=SMALLINT},
+            </if>
+            <if test="orderType != null" >
+                #{orderType,jdbcType=SMALLINT},
+            </if>
+            <if test="validBefore != null ">
+                #{validBefore,jdbcType=DECIMAL},
+            </if>
+            <if test="operate != null">
+                #{operate,jdbcType=SMALLINT},
+            </if>
+            <if test="validAfter != null ">
+                #{validAfter,jdbcType=DECIMAL},
+            </if>
+            <if test="custId != null" >
+                #{custId,jdbcType=VARCHAR},
+            </if>
+            <if test="acctId != null" >
+                #{acctId,jdbcType=VARCHAR},
+            </if>
+            <if test="mallId != null" >
+                #{mallId,jdbcType=VARCHAR},
+            </if>
+            <if test="shiftId != null" >
+                #{shiftId,jdbcType=VARCHAR},
+            </if>
+            <if test="listNo != null" >
+                #{listNo,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.huateng.data.model.db2.ServiceOrder">
+        update service_order
+        <set>
+            <if test="channel != null">
+                channel = #{channel,jdbcType=VARCHAR},
+            </if>
+            <if test="posId != null">
+                pos_id = #{posId,jdbcType=VARCHAR},
+            </if>
+            <if test="stationId != null">
+                station_id = #{stationId,jdbcType=VARCHAR},
+            </if>
+            <if test="reqSerialNo != null">
+                req_serial_no = #{reqSerialNo,jdbcType=VARCHAR},
+            </if>
+            <if test="repairSerialNo != null">
+                repair_serial_no = #{repairSerialNo,jdbcType=VARCHAR},
+            </if>
+            <if test="targetSerialNo != null">
+                target_serial_no = #{targetSerialNo,jdbcType=VARCHAR},
+            </if>
+            <if test="channelDate != null">
+                channel_date = #{channelDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="businessDate != null">
+                business_date = #{businessDate,jdbcType=DATE},
+            </if>
+            <if test="hostDate != null">
+                host_date = #{hostDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="number != null">
+                number = #{number,jdbcType=DECIMAL},
+            </if>
+            <if test="returnableNumber != null">
+                returnable_number = #{returnableNumber,jdbcType=DECIMAL},
+            </if>
+            <if test="orderPrice != null">
+                order_price = #{orderPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="returnablePrice != null">
+                returnable_price = #{returnablePrice,jdbcType=DECIMAL},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=SMALLINT},
+            </if>
+            <if test="orderType != null">
+                order_type = #{orderType,jdbcType=SMALLINT},
+            </if>
+            <if test="validBefore != null">
+                valid_before = #{validBefore,jdbcType=DECIMAL},
+            </if>
+            <if test="operate != null">
+                operate = #{operate,jdbcType=SMALLINT},
+            </if>
+            <if test="validAfter != null">
+                valid_after = #{validAfter,jdbcType=DECIMAL},
+            </if>
+            <if test="custId != null">
+                cust_id = #{custId,jdbcType=VARCHAR},
+            </if>
+            <if test="acctId != null">
+                acct_id = #{acctId,jdbcType=VARCHAR},
+            </if>
+            <if test="mallId != null">
+                mall_id = #{mallId,jdbcType=VARCHAR},
+            </if>
+            <if test="shiftId != null">
+                shift_id = #{shiftId,jdbcType=VARCHAR},
+            </if>
+            <if test="listNo != null">
+                list_no = #{listNo,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+</mapper>

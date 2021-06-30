@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: b2c-online
+  cloud:
+    consul:
+      host: 127.0.0.1
+      port: 8500
+      discovery:
+        prefer-ip-address: true
+        instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
+        health-check-path: /actuator/health
+        health-check-interval: 10s
+        acl-token: 126e201f-3775-6473-eecd-844354fecf50
+        register: true
+        deregister: false
+server:
+  undertow:
+    max-http-post-size: 0
+    io-threads: 8
+    worker-threads: 64
+    buffer-size: 1024
+    direct-buffers: true
+feign:
+  compression:
+    request:
+      enabled: true
+      mime-types: application/json
+    response:
+      enabled: true
+sign:
+  private: MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDEkl/m7y9MDUVJUTI5eG4clEkUT9AMm96G8cL2BeSo414uzMO0+razCkXvlQtALo9JLGEqwDzZvgreyvca684JpGdExMSc8TMBU1rhQb6NS6feoNRyqbIWAl6iw2yMpbo1KlrQEHMiQcrPpeR3yk7RhVWsY4ppqy2C6UB8ix5Wz8/k6yl7wM1W24jauneXhbaAlsxcE3pLvjKYuvmJJryrO+p6ud/Mh5jE5zbAy9XcPM66ksjSDPMB0dXlPCBFJzrsvqueBObwsvnda9visqZK/uhclG5/BxyYB5O6Js/5EuClksgQBcJiJzlZghHhkEO4QhgZdTrJTlReQnHBU5nJAgMBAAECggEAJZCDWzJiK3ptvzERFAJ7qGJ+BK+r5nzy7X7N7w35QH0SxobC75bpyxUvgDVPTRiYsTcV6oGKH2I92Y2X40Ekwpr0USP5HrTJNnujZmCV9ZJ7pgO+FZtwONyDET+fQtF44CgT6qb6GZXRGBVvr6Sto0SDtsne7YqUy+ufMy2ywovmKr1E0dR6Hk/HlTd6HMqzuiPlIA1lOsEy32PVfiaTTKkzoUC9vvD+V0J1sc/inti4mibNnza50AaV+NBvg3IdNf224Z5J0syvZP0gbzxpKfVwgxcFiBzDuxcEucAVz8ToYSsn4FVBjOioIjKyJSrBxR4l2ya/r51p+RpGc6dYAQKBgQDruxMy/bFxtjy0Y35eaF+6LadreDALYAOe0zkGtvNQBqo5vcNmkmBdjDRvlriI+KVCazgeSg0/wxyuBBafGvWY3Z+r60FnUGT7owoMaNSbMpOBXFEy/EDtOdV3RxPXZ09G+Dt2fsI2WoylpngDYhsoRfQgPFh4O9z9XA0yhDigQQKBgQDVeVQrfkdd3BroUFW0M4wD6SQ2X98S2kN/PKmq1D5Z2lviZl5AU5t43ZkVu6m8RrPEgRQHC7ZBicIIk5YA9nyDuQvuIgTrnOaueZMAsKGcv6dIvOZBVW42E1OOVGV6k1f/RB8gRliFhrM/gcKWt8YTBwh9mfj4towLPqAzwKAXiQKBgGnrEdJciUllr9sBxXsX/MND1jEEvNmvl5DaqYnp1GPFyuDM8ip5ZNFDuR/Woi3xQxgX4wxBC7j1q0JJVfzBeU7pbeAqgaWxSt6CQHaY98aQMBT07Qsyqt2smczRZAnqQoXJ7bXteMhBYWbg6JXkk/1BiVKeqsXDaCVzIf7ryCHBAoGAAxCr6bf1dF6NsFo+8MhwsTmuwG0d+dpSb8hCM2a6wnWFLjoEDm5k5BZidVJtfHuTZzXnQLalVkmRFKhx1e+0F/wXNMMeSPfGxCiQuMjQeTyzPTMhJzz/yRz77SY/EsR81fh3bfI0oS4u8rF9Rsa6vFk0gQEt9vxABIVQrY2NfukCgYAIEsxmuXsNWpl85r08nMUHAUE/7jl8DzR1kxgi95Q5eeiMaL6HvSEdLYXlEPUBEwSIkP4KZYegV20kTCoztPw++eGrpagetJ8BaKmz/Y1n3Fls+gYZpzwXmyIads/UhpWTANAocVCow62Q92vY/3cqLZo6VgNTkxqThtIlPPLfqA==
+  isSign: true

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huateng.data.db3.mapper.SaleJMapper">
+    <resultMap id="BaseResultMap" type="com.huateng.data.model.db3.SaleJ">
+        <result column="shopid" jdbcType="VARCHAR" property="shopid"/>
+        <result column="dt" jdbcType="TIMESTAMP" property="dt"/>
+        <result column="time" jdbcType="TIMESTAMP" property="time"/>
+        <result column="reqtime" jdbcType="CHAR" property="reqtime"/>
+        <result column="listno" jdbcType="INTEGER" property="listno"/>
+        <result column="sublistno" jdbcType="INTEGER" property="sublistno"/>
+        <result column="pos_id" jdbcType="CHAR" property="posId"/>
+        <result column="cashier_id" jdbcType="CHAR" property="cashierId"/>
+        <result column="waiter_id" jdbcType="CHAR" property="waiterId"/>
+        <result column="vgno" jdbcType="CHAR" property="vgno"/>
+        <result column="goodsno" jdbcType="CHAR" property="goodsno"/>
+        <result column="placeno" jdbcType="CHAR" property="placeno"/>
+        <result column="groupno" jdbcType="CHAR" property="groupno"/>
+        <result column="deptno" jdbcType="CHAR" property="deptno"/>
+        <result column="amount" jdbcType="INTEGER" property="amount"/>
+        <result column="colorsize" jdbcType="CHAR" property="colorsize"/>
+        <result column="item_value" jdbcType="DECIMAL" property="itemValue"/>
+        <result column="disc_value" jdbcType="DECIMAL" property="discValue"/>
+        <result column="item_type" jdbcType="CHAR" property="itemType"/>
+        <result column="v_type" jdbcType="CHAR" property="vType"/>
+        <result column="disc_type" jdbcType="CHAR" property="discType"/>
+        <result column="authorizer_id" jdbcType="CHAR" property="authorizerId"/>
+        <result column="x" jdbcType="INTEGER" property="x"/>
+        <result column="deliver_flag" jdbcType="CHAR" property="deliverFlag"/>
+        <result column="flag1" jdbcType="CHAR" property="flag1"/>
+        <result column="flag2" jdbcType="CHAR" property="flag2"/>
+        <result column="flag3" jdbcType="CHAR" property="flag3"/>
+        <result column="trainflag" jdbcType="CHAR" property="trainflag"/>
+        <result column="price" jdbcType="DECIMAL" property="price"/>
+        <result column="use_goodsno" jdbcType="CHAR" property="useGoodsno"/>
+        <result column="serialid" jdbcType="DECIMAL" property="serialid"/>
+        <result column="shiftid" jdbcType="INTEGER" property="shiftid"/>
+        <result column="workdate" jdbcType="TIMESTAMP" property="workdate"/>
+        <result column="iszhongjinpay" jdbcType="CHAR" property="iszhongjinpay"/>
+        <result column="govprice" jdbcType="DECIMAL" property="govprice"/>
+        <result column="govitemvalue" jdbcType="DECIMAL" property="govitemvalue"/>
+        <result column="govdiscvalue" jdbcType="DECIMAL" property="govdiscvalue"/>
+        <result column="points" jdbcType="DECIMAL" property="points"/>
+        <result column="discvalue_card" jdbcType="DECIMAL" property="discvalueCard"/>
+        <result column="fdcsseq" jdbcType="INTEGER" property="fdcsseq"/>
+        <result column="fpnum" jdbcType="INTEGER" property="fpnum"/>
+        <result column="taxrate" jdbcType="DECIMAL" property="taxrate"/>
+    </resultMap>
+
+    <select id="queryInfo" parameterType="com.huateng.data.model.db3.SaleJ" resultMap="BaseResultMap">
+        select * from sale_j where shopid=#{shopid} and listno=#{listno} and pos_id=#{posId} and shiftid=#{shiftid} and workdate=#{workdate}
+    </select>
+</mapper>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huateng.data.db2.mapper.ServiceInvoiceTxnMapper">
+    <resultMap id="BaseResultMap" type="com.huateng.data.model.db2.ServiceInvoiceTxn">
+        <id column="id" jdbcType="VARCHAR" property="id" />
+        <result column="channel" jdbcType="VARCHAR" property="channel" />
+        <result column="req_serial_no" jdbcType="VARCHAR" property="reqSerialNo" />
+        <result column="send_date" jdbcType="TIMESTAMP" property="sendDate" />
+        <result column="host_date" jdbcType="TIMESTAMP" property="hostDate" />
+        <result column="count" jdbcType="INTEGER" property="count" />
+        <result column="status" jdbcType="SMALLINT" property="status" />
+        <result column="result_msg" jdbcType="VARCHAR" property="resultMsg" />
+    </resultMap>
+    <insert id="insertSelective" parameterType="com.huateng.data.model.db2.ServiceInvoiceTxn">
+        insert into service_invoice_txn
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="channel != null">
+                channel,
+            </if>
+            <if test="reqSerialNo != null">
+                req_serial_no,
+            </if>
+            <if test="sendDate != null">
+                send_date,
+            </if>
+            <if test="hostDate != null">
+                host_date,
+            </if>
+            <if test="count != null">
+                count,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="resultMsg != null">
+                result_msg,
+            </if>
+            <if test="sendParams != null">
+                send_params,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="channel != null">
+                #{channel,jdbcType=BIGINT},
+            </if>
+            <if test="reqSerialNo != null">
+                #{reqSerialNo,jdbcType=VARCHAR},
+            </if>
+            <if test="sendDate != null">
+                #{sendDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="hostDate != null">
+                #{hostDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="count != null">
+                #{count,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=SMALLINT},
+            </if>
+            <if test="resultMsg != null">
+                #{resultMsg,jdbcType=VARCHAR},
+            </if>
+            <if test="sendParams != null">
+                #{sendParams,jdbcType=CLOB},
+            </if>
+        </trim>
+    </insert>
+</mapper>

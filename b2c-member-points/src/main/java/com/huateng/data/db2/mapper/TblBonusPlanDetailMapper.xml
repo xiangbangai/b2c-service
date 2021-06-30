@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.huateng.data.db2.mapper.TblBonusPlanDetailMapper" >
+  <resultMap id="BaseResultMap" type="com.huateng.data.model.db2.TblBonusPlanDetail" >
+    <id column="pk_bonus_plan_detail" property="pkBonusPlanDetail" jdbcType="DECIMAL" />
+    <result column="usage_key" property="usageKey" jdbcType="VARCHAR" />
+    <result column="cust_id" property="custId" jdbcType="VARCHAR" />
+    <result column="acct_id" property="acctId" jdbcType="VARCHAR" />
+    <result column="bp_plan_type" property="bpPlanType" jdbcType="VARCHAR" />
+    <result column="total_bonus" property="totalBonus" jdbcType="DECIMAL" />
+    <result column="valid_bonus" property="validBonus" jdbcType="DECIMAL" />
+    <result column="apply_bonus" property="applyBonus" jdbcType="DECIMAL" />
+    <result column="expire_bonus" property="expireBonus" jdbcType="DECIMAL" />
+    <result column="valid_date" property="validDate" jdbcType="VARCHAR" />
+    <result column="expired_status" property="expiredStatus" jdbcType="VARCHAR" />
+    <result column="create_oper" property="createOper" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    <result column="modify_oper" property="modifyOper" jdbcType="VARCHAR" />
+    <result column="modify_date" property="modifyDate" jdbcType="VARCHAR" />
+    <result column="modify_time" property="modifyTime" jdbcType="VARCHAR" />
+    <result column="ext_coulmn1" property="extCoulmn1" jdbcType="VARCHAR" />
+    <result column="ext_coulmn2" property="extCoulmn2" jdbcType="VARCHAR" />
+    <result column="ext_coulmn3" property="extCoulmn3" jdbcType="VARCHAR" />
+    <result column="ext_coulmn4" property="extCoulmn4" jdbcType="DECIMAL" />
+    <result column="lock_status" property="lockStatus" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    pk_bonus_plan_detail, usage_key, cust_id, acct_id, bp_plan_type, total_bonus, valid_bonus, 
+    apply_bonus, expire_bonus, valid_date, expired_status, create_oper, create_date, 
+    create_time, modify_oper, modify_date, modify_time, ext_coulmn1, ext_coulmn2, ext_coulmn3, 
+    ext_coulmn4, lock_status
+  </sql>
+
+  <update id="updatePlanDetailBonus" parameterType="com.huateng.data.model.db2.TblBonusPlanDetail">
+    update tbl_bonus_plan_detail
+      <set>
+        <if test="totalBonus != null">
+          total_bonus = #{totalBonus},
+        </if>
+        <if test="validBonus != null">
+          valid_bonus = #{validBonus},
+        </if>
+        <if test="applyBonus != null">
+          apply_bonus = #{applyBonus},
+        </if>
+        <if test="modifyOper != null and modifyOper != ''">
+          modify_oper = #{modifyOper},
+        </if>
+        <if test="modifyDate != null and modifyDate != ''">
+          modify_date = #{modifyDate},
+        </if>
+        <if test="modifyTime != null and modifyTime != ''">
+          modify_time = #{modifyTime},
+        </if>
+        <if test="expiredStatus != null and expiredStatus != ''">
+          expired_status = #{expiredStatus},
+        </if>
+      </set>
+    where pk_bonus_plan_detail = #{pkBonusPlanDetail}
+  </update>
+
+  <insert id="insert" parameterType="com.huateng.data.model.db2.TblBonusPlanDetail" >
+    <selectKey resultType="decimal" keyProperty="pkBonusPlanDetail" order="BEFORE">
+      select seq_bonus_plan_detail.nextval from dual
+    </selectKey>
+    insert into tbl_bonus_plan_detail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pkBonusPlanDetail != null" >
+        pk_bonus_plan_detail,
+      </if>
+      <if test="usageKey != null" >
+        usage_key,
+      </if>
+      <if test="custId != null" >
+        cust_id,
+      </if>
+      <if test="acctId != null" >
+        acct_id,
+      </if>
+      <if test="bpPlanType != null" >
+        bp_plan_type,
+      </if>
+      <if test="totalBonus != null" >
+        total_bonus,
+      </if>
+      <if test="validBonus != null" >
+        valid_bonus,
+      </if>
+      <if test="applyBonus != null" >
+        apply_bonus,
+      </if>
+      <if test="expireBonus != null" >
+        expire_bonus,
+      </if>
+      <if test="validDate != null" >
+        valid_date,
+      </if>
+      <if test="expiredStatus != null" >
+        expired_status,
+      </if>
+      <if test="createOper != null" >
+        create_oper,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="modifyOper != null" >
+        modify_oper,
+      </if>
+      <if test="modifyDate != null" >
+        modify_date,
+      </if>
+      <if test="modifyTime != null" >
+        modify_time,
+      </if>
+      <if test="extCoulmn1 != null" >
+        ext_coulmn1,
+      </if>
+      <if test="extCoulmn2 != null" >
+        ext_coulmn2,
+      </if>
+      <if test="extCoulmn3 != null" >
+        ext_coulmn3,
+      </if>
+      <if test="extCoulmn4 != null" >
+        ext_coulmn4,
+      </if>
+      <if test="lockStatus != null" >
+        lock_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pkBonusPlanDetail != null" >
+        #{pkBonusPlanDetail,jdbcType=DECIMAL},
+      </if>
+      <if test="usageKey != null" >
+        #{usageKey,jdbcType=VARCHAR},
+      </if>
+      <if test="custId != null" >
+        #{custId,jdbcType=VARCHAR},
+      </if>
+      <if test="acctId != null" >
+        #{acctId,jdbcType=VARCHAR},
+      </if>
+      <if test="bpPlanType != null" >
+        #{bpPlanType,jdbcType=VARCHAR},
+      </if>
+      <if test="totalBonus != null" >
+        #{totalBonus,jdbcType=DECIMAL},
+      </if>
+      <if test="validBonus != null" >
+        #{validBonus,jdbcType=DECIMAL},
+      </if>
+      <if test="applyBonus != null" >
+        #{applyBonus,jdbcType=DECIMAL},
+      </if>
+      <if test="expireBonus != null" >
+        #{expireBonus,jdbcType=DECIMAL},
+      </if>
+      <if test="validDate != null" >
+        #{validDate,jdbcType=VARCHAR},
+      </if>
+      <if test="expiredStatus != null" >
+        #{expiredStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="createOper != null" >
+        #{createOper,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyOper != null" >
+        #{modifyOper,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyDate != null" >
+        #{modifyDate,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="extCoulmn1 != null" >
+        #{extCoulmn1,jdbcType=VARCHAR},
+      </if>
+      <if test="extCoulmn2 != null" >
+        #{extCoulmn2,jdbcType=VARCHAR},
+      </if>
+      <if test="extCoulmn3 != null" >
+        #{extCoulmn3,jdbcType=VARCHAR},
+      </if>
+      <if test="extCoulmn4 != null" >
+        #{extCoulmn4,jdbcType=DECIMAL},
+      </if>
+      <if test="lockStatus != null" >
+        #{lockStatus,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+</mapper>

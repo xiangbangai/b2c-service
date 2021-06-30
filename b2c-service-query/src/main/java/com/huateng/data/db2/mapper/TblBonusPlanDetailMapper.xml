@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.huateng.data.db2.mapper.TblBonusPlanDetailMapper" >
+  <resultMap id="BaseResultMap" type="com.huateng.data.model.db2.TblBonusPlanDetail" >
+    <id column="pk_bonus_plan_detail" property="pkBonusPlanDetail" jdbcType="DECIMAL" />
+    <result column="usage_key" property="usageKey" jdbcType="VARCHAR" />
+    <result column="cust_id" property="custId" jdbcType="VARCHAR" />
+    <result column="acct_id" property="acctId" jdbcType="VARCHAR" />
+    <result column="bp_plan_type" property="bpPlanType" jdbcType="VARCHAR" />
+    <result column="total_bonus" property="totalBonus" jdbcType="DECIMAL" />
+    <result column="valid_bonus" property="validBonus" jdbcType="DECIMAL" />
+    <result column="apply_bonus" property="applyBonus" jdbcType="DECIMAL" />
+    <result column="expire_bonus" property="expireBonus" jdbcType="DECIMAL" />
+    <result column="valid_date" property="validDate" jdbcType="VARCHAR" />
+    <result column="expired_status" property="expiredStatus" jdbcType="VARCHAR" />
+    <result column="create_oper" property="createOper" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    <result column="modify_oper" property="modifyOper" jdbcType="VARCHAR" />
+    <result column="modify_date" property="modifyDate" jdbcType="VARCHAR" />
+    <result column="modify_time" property="modifyTime" jdbcType="VARCHAR" />
+    <result column="ext_coulmn1" property="extCoulmn1" jdbcType="VARCHAR" />
+    <result column="ext_coulmn2" property="extCoulmn2" jdbcType="VARCHAR" />
+    <result column="ext_coulmn3" property="extCoulmn3" jdbcType="VARCHAR" />
+    <result column="ext_coulmn4" property="extCoulmn4" jdbcType="DECIMAL" />
+    <result column="lock_status" property="lockStatus" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    pk_bonus_plan_detail, usage_key, cust_id, acct_id, bp_plan_type, total_bonus, valid_bonus,
+    apply_bonus, expire_bonus, valid_date, expired_status, create_oper, create_date, 
+    create_time, modify_oper, modify_date, modify_time, ext_coulmn1, ext_coulmn2, ext_coulmn3, 
+    ext_coulmn4, lock_status
+  </sql>
+
+
+  <select id="queryBonusPlanDetail" parameterType="com.huateng.data.vo.params.BonusPlanDetailParams" resultMap="BaseResultMap">
+    select * from tbl_bonus_plan_detail
+      <where>
+          <if test="validates != null">
+              <foreach collection="validates" item="validate" open="and valid_date in (" close=")" separator=",">
+                  #{validate}
+              </foreach>
+          </if>
+          <if test="validBonus != null">
+              <![CDATA[
+            and valid_bonus > #{validBonus}
+            ]]>
+          </if>
+          <if test="expiredStatus != null">
+              and expired_status = #{expiredStatus}
+          </if>
+          <if test="bpPlanType != null">
+              and bp_plan_type = #{bpPlanType}
+          </if>
+          <if test="custId != null">
+              and cust_id = #{custId}
+          </if>
+      </where>
+      <choose>
+          <when test="isOrderByDate != null">
+              order by valid_date desc
+          </when>
+          <otherwise>
+              order by valid_date
+          </otherwise>
+      </choose>
+  </select>
+
+
+  <select id="queryBonusPlanDetails" resultMap="BaseResultMap">
+    select * from tbl_bonus_plan_detail
+    where
+        bp_plan_type = #{bpPlanType}
+        <if test="validates != null">
+          <foreach collection="validates" item="validate" open="and valid_date in (" close=")" separator=",">
+            #{validate}
+          </foreach>
+        </if>
+        and cust_id = #{custId}
+  </select>
+
+</mapper>

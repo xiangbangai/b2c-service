@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.huateng.data.db2.mapper.TblCustUserMapper" >
+  <resultMap id="BaseResultMap" type="com.huateng.data.model.db2.TblCustUser" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="cust_id" property="custId" jdbcType="VARCHAR" />
+    <result column="cust_name" property="custName" jdbcType="VARCHAR" />
+    <result column="gender" property="gender" jdbcType="VARCHAR" />
+    <result column="id_card_no" property="idCardNo" jdbcType="VARCHAR" />
+    <result column="education_background" property="educationBackground" jdbcType="VARCHAR" />
+    <result column="marrige" property="marrige" jdbcType="VARCHAR" />
+    <result column="brith_date" property="brithDate" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="open_id" property="openId" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <select id="queryCustUser" resultMap="BaseResultMap">
+    select first 1 * from tbl_cust_user where cust_id = #{custId} and status='0'
+  </select>
+
+  <select id="queryTblCustUsersByCustId" resultMap="BaseResultMap">
+    select * from tbl_cust_user where cust_id = #{custId} and status='0'
+  </select>
+</mapper>

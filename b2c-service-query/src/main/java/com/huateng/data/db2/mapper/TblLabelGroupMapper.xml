@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.huateng.data.db2.mapper.TblLabelGroupMapper" >
+  <resultMap id="BaseResultMap" type="com.huateng.data.model.db2.TblLabelGroup" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="group_name" property="groupName" jdbcType="VARCHAR" />
+    <result column="msg_content" property="msgContent" jdbcType="VARCHAR" />
+    <result column="adv_content" property="advContent" jdbcType="VARCHAR" />
+    <result column="adv_url" property="advUrl" jdbcType="VARCHAR" />
+    <result column="creator" property="creator" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="modifier" property="modifier" jdbcType="VARCHAR" />
+    <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+
+  <select id="queryLabelGroupByLabelGroupInfo" resultMap="BaseResultMap">
+    select distinct t1.* from tbl_label_group t1,tbl_label_group_relation t2 where t1.id = t2.group_id
+      <if test="labelIds != null and labelIds.size() != 0">
+        and t2.label_id in <foreach collection="labelIds" item="labelId" open="( " separator="," close=" )" > #{labelId}</foreach>
+      </if>
+  </select>
+
+
+</mapper>

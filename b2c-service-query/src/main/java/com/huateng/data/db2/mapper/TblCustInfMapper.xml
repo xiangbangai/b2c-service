@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huateng.data.db2.mapper.TblCustInfMapper">
+    <resultMap id="BaseResultMap" type="com.huateng.data.model.db2.TblCustInf">
+        <id column="cust_id" jdbcType="VARCHAR" property="custId" />
+        <result column="cust_name" jdbcType="VARCHAR" property="custName" />
+        <result column="usage_key" jdbcType="VARCHAR" property="usageKey" />
+        <result column="open_brh" jdbcType="VARCHAR" property="openBrh" />
+        <result column="cust_type" jdbcType="VARCHAR" property="custType" />
+        <result column="cust_id_type" jdbcType="VARCHAR" property="custIdType" />
+        <result column="cust_id_num" jdbcType="VARCHAR" property="custIdNum" />
+        <result column="xuelii" jdbcType="VARCHAR" property="xuelii" />
+        <result column="cust_birthday" jdbcType="VARCHAR" property="custBirthday" />
+        <result column="open_date" jdbcType="VARCHAR" property="openDate" />
+        <result column="close_date" jdbcType="VARCHAR" property="closeDate" />
+        <result column="cust_mobile" jdbcType="VARCHAR" property="custMobile" />
+        <result column="cust_addr" jdbcType="VARCHAR" property="custAddr" />
+        <result column="cust_level" jdbcType="VARCHAR" property="custLevel" />
+        <result column="cust_bonus_status" jdbcType="VARCHAR" property="custBonusStatus" />
+        <result column="modify_date" jdbcType="VARCHAR" property="modifyDate" />
+        <result column="modify_time" jdbcType="VARCHAR" property="modifyTime" />
+        <result column="ext_coulmn1" jdbcType="VARCHAR" property="extCoulmn1" />
+        <result column="ext_coulmn2" jdbcType="VARCHAR" property="extCoulmn2" />
+        <result column="ext_coulmn3" jdbcType="VARCHAR" property="extCoulmn3" />
+        <result column="ext_coulmn4" jdbcType="DECIMAL" property="extCoulmn4" />
+        <result column="cust_gender" jdbcType="VARCHAR" property="custGender" />
+        <result column="cust_mail" jdbcType="VARCHAR" property="custMail" />
+        <result column="cust_career" jdbcType="VARCHAR" property="custCareer" />
+        <result column="plate_num" jdbcType="VARCHAR" property="plateNum" />
+        <result column="year_settlement_flg" jdbcType="VARCHAR" property="yearSettlementFlg" />
+        <result column="is_auth_mobile" jdbcType="VARCHAR" property="isAuthMobile" />
+        <result column="is_auth_mail" jdbcType="VARCHAR" property="isAuthMail" />
+        <result column="is_active" jdbcType="VARCHAR" property="isActive" />
+        <result column="observation_date" jdbcType="VARCHAR" property="observationDate" />
+        <result column="observation_fuel_count" jdbcType="INTEGER" property="observationFuelCount" />
+        <result column="fuel_count" jdbcType="INTEGER" property="fuelCount" />
+        <result column="last_fuel_date" jdbcType="VARCHAR" property="lastFuelDate" />
+        <result column="open_id" jdbcType="VARCHAR" property="openId" />
+        <result column="passwd" jdbcType="VARCHAR" property="passwd" />
+        <result column="cust_invoice" jdbcType="VARCHAR" property="custInvoice" />
+        <result column="bank_no" jdbcType="VARCHAR" property="bankNo" />
+        <result column="is_change" jdbcType="INTEGER" property="isChange" />
+        <result column="is_accept_einvoice" jdbcType="INTEGER" property="isAcceptEinvoice" />
+        <result column="is_real_cust" jdbcType="INTEGER" property="isRealCust" />
+        <result column="is_mobile_use" jdbcType="INTEGER" property="isMobileUse" />
+        <result column="is_plate_num_pay" jdbcType="INTEGER" property="isPlateNumPay" />
+        <result column="active_date" jdbcType="VARCHAR" property="activeDate" />
+        <result column="limited_type" jdbcType="VARCHAR" property="limitedType" />
+        <result column="limited_count" jdbcType="INTEGER" property="limitedCount" />
+        <result column="limited_max_count" jdbcType="INTEGER" property="limitedMaxCount" />
+        <result column="limited_modify_date" jdbcType="VARCHAR" property="limitedModifyDate" />
+        <result column="limited_modify_user" jdbcType="VARCHAR" property="limitedModifyUser" />
+        <result column="is_cust_agreement" jdbcType="INTEGER" property="isCustAgreement" />
+        <result column="agreement_time" jdbcType="VARCHAR" property="agreementTime" />
+    </resultMap>
+
+
+    <resultMap id="infoAndAcct" type="com.huateng.data.model.db2.TblCustInfAndAcct">
+        <id column="cust_id" jdbcType="VARCHAR" property="custId" />
+        <result column="cust_name" jdbcType="VARCHAR" property="custName" />
+        <result column="usage_key" jdbcType="VARCHAR" property="usageKey" />
+        <result column="open_brh" jdbcType="VARCHAR" property="openBrh" />
+        <result column="cust_type" jdbcType="VARCHAR" property="custType" />
+        <result column="cust_id_type" jdbcType="VARCHAR" property="custIdType" />
+        <result column="cust_id_num" jdbcType="VARCHAR" property="custIdNum" />
+        <result column="xuelii" jdbcType="VARCHAR" property="xuelii" />
+        <result column="cust_birthday" jdbcType="VARCHAR" property="custBirthday" />
+        <result column="open_date" jdbcType="VARCHAR" property="openDate" />
+        <result column="close_date" jdbcType="VARCHAR" property="closeDate" />
+        <result column="cust_mobile" jdbcType="VARCHAR" property="custMobile" />
+        <result column="cust_addr" jdbcType="VARCHAR" property="custAddr" />
+        <result column="cust_level" jdbcType="VARCHAR" property="custLevel" />
+        <result column="cust_bonus_status" jdbcType="VARCHAR" property="custBonusStatus" />
+        <result column="modify_date" jdbcType="VARCHAR" property="modifyDate" />
+        <result column="modify_time" jdbcType="VARCHAR" property="modifyTime" />
+        <result column="ext_coulmn1" jdbcType="VARCHAR" property="extCoulmn1" />
+        <result column="ext_coulmn2" jdbcType="VARCHAR" property="extCoulmn2" />
+        <result column="ext_coulmn3" jdbcType="VARCHAR" property="extCoulmn3" />
+        <result column="ext_coulmn4" jdbcType="DECIMAL" property="extCoulmn4" />
+        <result column="cust_gender" jdbcType="VARCHAR" property="custGender" />
+        <result column="cust_mail" jdbcType="VARCHAR" property="custMail" />
+        <result column="cust_career" jdbcType="VARCHAR" property="custCareer" />
+        <result column="plate_num" jdbcType="VARCHAR" property="plateNum" />
+        <result column="year_settlement_flg" jdbcType="VARCHAR" property="yearSettlementFlg" />
+        <result column="is_auth_mobile" jdbcType="VARCHAR" property="isAuthMobile" />
+        <result column="is_auth_mail" jdbcType="VARCHAR" property="isAuthMail" />
+        <result column="is_active" jdbcType="VARCHAR" property="isActive" />
+        <result column="observation_date" jdbcType="VARCHAR" property="observationDate" />
+        <result column="observation_fuel_count" jdbcType="INTEGER" property="observationFuelCount" />
+        <result column="fuel_count" jdbcType="INTEGER" property="fuelCount" />
+        <result column="last_fuel_date" jdbcType="VARCHAR" property="lastFuelDate" />
+        <result column="open_id" jdbcType="VARCHAR" property="openId" />
+        <result column="passwd" jdbcType="VARCHAR" property="passwd" />
+        <result column="cust_invoice" jdbcType="VARCHAR" property="custInvoice" />
+        <result column="bank_no" jdbcType="VARCHAR" property="bankNo" />
+        <result column="is_change" jdbcType="INTEGER" property="isChange" />
+        <result column="is_accept_einvoice" jdbcType="INTEGER" property="isAcceptEinvoice" />
+        <result column="is_real_cust" jdbcType="INTEGER" property="isRealCust" />
+        <result column="is_mobile_use" jdbcType="INTEGER" property="isMobileUse" />
+        <result column="is_plate_num_pay" jdbcType="INTEGER" property="isPlateNumPay" />
+        <result column="active_date" jdbcType="VARCHAR" property="activeDate" />
+        <result column="limited_type" jdbcType="VARCHAR" property="limitedType" />
+        <result column="limited_count" jdbcType="INTEGER" property="limitedCount" />
+        <result column="limited_max_count" jdbcType="INTEGER" property="limitedMaxCount" />
+        <result column="limited_modify_date" jdbcType="VARCHAR" property="limitedModifyDate" />
+        <result column="limited_modify_user" jdbcType="VARCHAR" property="limitedModifyUser" />
+        <result column="is_cust_agreement" jdbcType="INTEGER" property="isCustAgreement" />
+        <result column="agreement_time" jdbcType="VARCHAR" property="agreementTime" />
+
+        <collection property="acctList" ofType="com.huateng.data.model.db2.TblAcctInfPart">
+            <result column="acct_id" jdbcType="VARCHAR" property="acctId" />
+            <result column="acct_type" jdbcType="VARCHAR" property="acctType" />
+        </collection>
+    </resultMap>
+
+
+    <select id="getCustInfo" resultMap="BaseResultMap">
+        select t1.* from tbl_cust_inf t1 join tbl_acct_inf t2 on (t1.cust_id = t2.cust_id and t2.acct_id = #{id})
+        where decode(t1.is_active,'N',0,1) = 1
+    </select>
+
+    <select id="getInfoAndAcct" resultMap="infoAndAcct">
+        select t1.*,t3.* from tbl_cust_inf t1 join tbl_acct_inf t2 on (t1.cust_id = t2.cust_id and t2.acct_id = #{id})
+        join tbl_acct_inf t3 on t1.cust_id = t3.cust_id
+        where decode(t1.is_active,'N',0,1) = 1
+    </select>
+
+    <select id="queryInfoById" resultMap="BaseResultMap">
+        select * from tbl_cust_inf where cust_id = #{custId} and decode(is_active,'N',0,1) = 1
+    </select>
+
+</mapper>

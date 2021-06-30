@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huateng.data.db3.mapper.PayJMapper">
+    <resultMap id="BaseResultMap" type="com.huateng.data.model.db3.PayJ">
+        <result column="shopid" jdbcType="VARCHAR" property="shopid"/>
+        <result column="dt" jdbcType="TIMESTAMP" property="dt"/>
+        <result column="time" jdbcType="TIMESTAMP" property="time"/>
+        <result column="reqtime" jdbcType="CHAR" property="reqtime"/>
+        <result column="listno" jdbcType="INTEGER" property="listno"/>
+        <result column="sublistno" jdbcType="INTEGER" property="sublistno"/>
+        <result column="pos_id" jdbcType="CHAR" property="posId"/>
+        <result column="cashier_id" jdbcType="CHAR" property="cashierId"/>
+        <result column="pay_seq" jdbcType="SMALLINT" property="paySeq"/>
+        <result column="pay_reason" jdbcType="VARCHAR" property="payReason"/>
+        <result column="pay_type" jdbcType="CHAR" property="payType"/>
+        <result column="deliver_flag" jdbcType="CHAR" property="deliverFlag"/>
+        <result column="curren_code" jdbcType="CHAR" property="currenCode"/>
+        <result column="pay_value" jdbcType="DECIMAL" property="payValue"/>
+        <result column="equiv_value" jdbcType="DECIMAL" property="equivValue"/>
+        <result column="cardno" jdbcType="VARCHAR" property="cardno"/>
+        <result column="flag3" jdbcType="CHAR" property="flag3"/>
+        <result column="trainflag" jdbcType="CHAR" property="trainflag"/>
+        <result column="serialid" jdbcType="DECIMAL" property="serialid"/>
+        <result column="shiftid" jdbcType="INTEGER" property="shiftid"/>
+        <result column="workdate" jdbcType="VARCHAR" property="workdate"/>
+        <result column="pointsttl" jdbcType="DECIMAL" property="pointsttl"/>
+        <result column="subcardtype" jdbcType="VARCHAR" property="subcardtype"/>
+    </resultMap>
+    <insert id="insert" parameterType="com.huateng.data.model.db3.PayJ">
+        insert into pay_j
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="shopid != null">
+                shopid,
+            </if>
+            <if test="dt != null">
+                dt,
+            </if>
+            <if test="time != null">
+                time,
+            </if>
+            <if test="reqtime != null">
+                reqtime,
+            </if>
+            <if test="listno != null">
+                listno,
+            </if>
+            <if test="sublistno != null">
+                sublistno,
+            </if>
+            <if test="posId != null">
+                pos_id,
+            </if>
+            <if test="cashierId != null">
+                cashier_id,
+            </if>
+            <if test="paySeq != null">
+                pay_seq,
+            </if>
+            <if test="payReason != null">
+                pay_reason,
+            </if>
+            <if test="payType != null">
+                pay_type,
+            </if>
+            <if test="deliverFlag != null">
+                deliver_flag,
+            </if>
+            <if test="currenCode != null">
+                curren_code,
+            </if>
+            <if test="payValue != null">
+                pay_value,
+            </if>
+            <if test="equivValue != null">
+                equiv_value,
+            </if>
+            <if test="cardno != null">
+                cardno,
+            </if>
+            <if test="flag3 != null">
+                flag3,
+            </if>
+            <if test="trainflag != null">
+                trainflag,
+            </if>
+            <if test="serialid != null">
+                serialid,
+            </if>
+            <if test="shiftid != null">
+                shiftid,
+            </if>
+            <if test="workdate != null">
+                workdate,
+            </if>
+            <if test="pointsttl != null">
+                pointsttl,
+            </if>
+            <if test="subcardtype != null">
+                subcardtype,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="shopid != null">
+                #{shopid,jdbcType=VARCHAR},
+            </if>
+            <if test="dt != null">
+                #{dt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="time != null">
+                #{time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="reqtime != null">
+                #{reqtime,jdbcType=CHAR},
+            </if>
+            <if test="listno != null">
+                #{listno,jdbcType=INTEGER},
+            </if>
+            <if test="sublistno != null">
+                #{sublistno,jdbcType=INTEGER},
+            </if>
+            <if test="posId != null">
+                #{posId,jdbcType=CHAR},
+            </if>
+            <if test="cashierId != null">
+                #{cashierId,jdbcType=CHAR},
+            </if>
+            <if test="paySeq != null">
+                #{paySeq,jdbcType=SMALLINT},
+            </if>
+            <if test="payReason != null">
+                #{payReason,jdbcType=VARCHAR},
+            </if>
+            <if test="payType != null">
+                #{payType,jdbcType=CHAR},
+            </if>
+            <if test="deliverFlag != null">
+                #{deliverFlag,jdbcType=CHAR},
+            </if>
+            <if test="currenCode != null">
+                #{currenCode,jdbcType=CHAR},
+            </if>
+            <if test="payValue != null">
+                #{payValue,jdbcType=DECIMAL},
+            </if>
+            <if test="equivValue != null">
+                #{equivValue,jdbcType=DECIMAL},
+            </if>
+            <if test="cardno != null">
+                #{cardno,jdbcType=VARCHAR},
+            </if>
+            <if test="flag3 != null">
+                #{flag3,jdbcType=CHAR},
+            </if>
+            <if test="trainflag != null">
+                #{trainflag,jdbcType=CHAR},
+            </if>
+            <if test="serialid != null">
+                #{serialid,jdbcType=DECIMAL},
+            </if>
+            <if test="shiftid != null">
+                #{shiftid,jdbcType=INTEGER},
+            </if>
+            <if test="workdate != null">
+                #{workdate,jdbcType=VARCHAR},
+            </if>
+            <if test="pointsttl != null">
+                #{pointsttl,jdbcType=DECIMAL},
+            </if>
+            <if test="subcardtype != null">
+                #{subcardtype,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+</mapper>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.huateng.data.db2.mapper.TblFuelConsumptionMapper" >
+  <resultMap id="BaseResultMap" type="com.huateng.data.model.db2.TblFuelConsumption" >
+    <id column="pk_fuel_consumption" property="pkFuelConsumption" jdbcType="DECIMAL" />
+    <result column="cust_id" property="custId" jdbcType="VARCHAR" />
+    <result column="goods_id" property="goodsId" jdbcType="VARCHAR" />
+    <result column="goods_nm" property="goodsNm" jdbcType="VARCHAR" />
+    <result column="goods_num" property="goodsNum" jdbcType="DECIMAL" />
+    <result column="goods_total_price" property="goodsTotalPrice" jdbcType="DECIMAL" />
+    <result column="goods_unit_price" property="goodsUnitPrice" jdbcType="DECIMAL" />
+    <result column="txn_date" property="txnDate" jdbcType="VARCHAR" />
+    <result column="txn_time" property="txnTime" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    pk_fuel_consumption, cust_id, goods_id, goods_nm, goods_num, goods_total_price, goods_unit_price, 
+    txn_date, txn_time
+  </sql>
+
+  <insert id="insert" parameterType="com.huateng.data.model.db2.TblFuelConsumption" >
+    <selectKey resultType="decimal" keyProperty="pkFuelConsumption" order="BEFORE">
+      select seq_fuel_consumption.nextval from dual
+    </selectKey>
+
+    insert into tbl_fuel_consumption
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pkFuelConsumption != null" >
+        pk_fuel_consumption,
+      </if>
+      <if test="custId != null" >
+        cust_id,
+      </if>
+      <if test="goodsId != null" >
+        goods_id,
+      </if>
+      <if test="goodsNm != null" >
+        goods_nm,
+      </if>
+      <if test="goodsNum != null" >
+        goods_num,
+      </if>
+      <if test="goodsTotalPrice != null" >
+        goods_total_price,
+      </if>
+      <if test="goodsUnitPrice != null" >
+        goods_unit_price,
+      </if>
+      <if test="txnDate != null" >
+        txn_date,
+      </if>
+      <if test="txnTime != null" >
+        txn_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pkFuelConsumption != null" >
+        #{pkFuelConsumption,jdbcType=DECIMAL},
+      </if>
+      <if test="custId != null" >
+        #{custId,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsId != null" >
+        #{goodsId,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsNm != null" >
+        #{goodsNm,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsNum != null" >
+        #{goodsNum,jdbcType=DECIMAL},
+      </if>
+      <if test="goodsTotalPrice != null" >
+        #{goodsTotalPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="goodsUnitPrice != null" >
+        #{goodsUnitPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="txnDate != null" >
+        #{txnDate,jdbcType=VARCHAR},
+      </if>
+      <if test="txnTime != null" >
+        #{txnTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+</mapper>

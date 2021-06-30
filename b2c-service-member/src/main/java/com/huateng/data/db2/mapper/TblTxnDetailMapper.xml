@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.huateng.data.db2.mapper.TblTxnDetailMapper" >
+  <resultMap id="BaseResultMap" type="com.huateng.data.model.db2.TblTxnDetail" >
+    <id column="pk_txn_detail" property="pkTxnDetail" jdbcType="DECIMAL" />
+    <result column="usage_key" property="usageKey" jdbcType="VARCHAR" />
+    <result column="acq_ssn" property="acqSsn" jdbcType="VARCHAR" />
+    <result column="bonus_ssn" property="bonusSsn" jdbcType="VARCHAR" />
+    <result column="key_reversal" property="keyReversal" jdbcType="VARCHAR" />
+    <result column="chnl_no" property="chnlNo" jdbcType="VARCHAR" />
+    <result column="txn_date" property="txnDate" jdbcType="VARCHAR" />
+    <result column="txn_time" property="txnTime" jdbcType="VARCHAR" />
+    <result column="txn_type" property="txnType" jdbcType="VARCHAR" />
+    <result column="txn_code" property="txnCode" jdbcType="VARCHAR" />
+    <result column="txn_desc" property="txnDesc" jdbcType="VARCHAR" />
+    <result column="txn_ext_info" property="txnExtInfo" jdbcType="VARCHAR" />
+    <result column="cust_id" property="custId" jdbcType="VARCHAR" />
+    <result column="acct_id" property="acctId" jdbcType="VARCHAR" />
+    <result column="bp_plan_type" property="bpPlanType" jdbcType="VARCHAR" />
+    <result column="cust_id_ref" property="custIdRef" jdbcType="VARCHAR" />
+    <result column="acct_id_ref" property="acctIdRef" jdbcType="VARCHAR" />
+    <result column="bp_plan_type_ref" property="bpPlanTypeRef" jdbcType="VARCHAR" />
+    <result column="txn_bonus" property="txnBonus" jdbcType="DECIMAL" />
+    <result column="bonus_cd_flag" property="bonusCdFlag" jdbcType="VARCHAR" />
+    <result column="txn_mcht_no" property="txnMchtNo" jdbcType="VARCHAR" />
+    <result column="brh_id" property="brhId" jdbcType="VARCHAR" />
+    <result column="reply_code" property="replyCode" jdbcType="VARCHAR" />
+    <result column="txn_status" property="txnStatus" jdbcType="VARCHAR" />
+    <result column="reply_message" property="replyMessage" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    <result column="order_id" property="orderId" jdbcType="VARCHAR" />
+    <result column="opr_user" property="oprUser" jdbcType="VARCHAR" />
+    <result column="check_user" property="checkUser" jdbcType="VARCHAR" />
+    <result column="ext_coulmn4" property="extCoulmn4" jdbcType="DECIMAL" />
+    <result column="ext_coulmn3" property="extCoulmn3" jdbcType="VARCHAR" />
+    <result column="ext_coulmn2" property="extCoulmn2" jdbcType="VARCHAR" />
+    <result column="ext_coulmn1" property="extCoulmn1" jdbcType="VARCHAR" />
+    <result column="ora_txn_date" property="oraTxnDate" jdbcType="VARCHAR" />
+    <result column="return_flag" property="returnFlag" jdbcType="VARCHAR" />
+    <result column="station_id" property="stationId" jdbcType="VARCHAR" />
+    <result column="pos_id" property="posId" jdbcType="VARCHAR" />
+    <result column="ora_key_reversal" property="oraKeyReversal" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    pk_txn_detail, usage_key, acq_ssn, bonus_ssn, key_reversal, chnl_no, txn_date, txn_time, 
+    txn_type, txn_code, txn_desc, txn_ext_info, cust_id, acct_id, bp_plan_type, cust_id_ref, 
+    acct_id_ref, bp_plan_type_ref, txn_bonus, bonus_cd_flag, txn_mcht_no, brh_id, reply_code, 
+    txn_status, reply_message, create_date, create_time, order_id, opr_user, check_user, 
+    ext_coulmn4, ext_coulmn3, ext_coulmn2, ext_coulmn1, ora_txn_date, return_flag, station_id, 
+    pos_id, ora_key_reversal
+  </sql>
+
+  <insert id="insert" parameterType="com.huateng.data.model.db2.TblTxnDetail" >
+    <selectKey resultType="decimal" keyProperty="pkTxnDetail" order="BEFORE">
+      select seq_txn_detail.nextval from dual
+    </selectKey>
+    insert into tbl_txn_detail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pkTxnDetail != null" >
+        pk_txn_detail,
+      </if>
+      <if test="usageKey != null" >
+        usage_key,
+      </if>
+      <if test="acqSsn != null" >
+        acq_ssn,
+      </if>
+      <if test="bonusSsn != null" >
+        bonus_ssn,
+      </if>
+      <if test="keyReversal != null" >
+        key_reversal,
+      </if>
+      <if test="chnlNo != null" >
+        chnl_no,
+      </if>
+      <if test="txnDate != null" >
+        txn_date,
+      </if>
+      <if test="txnTime != null" >
+        txn_time,
+      </if>
+      <if test="txnType != null" >
+        txn_type,
+      </if>
+      <if test="txnCode != null" >
+        txn_code,
+      </if>
+      <if test="txnDesc != null" >
+        txn_desc,
+      </if>
+      <if test="txnExtInfo != null" >
+        txn_ext_info,
+      </if>
+      <if test="custId != null" >
+        cust_id,
+      </if>
+      <if test="acctId != null" >
+        acct_id,
+      </if>
+      <if test="bpPlanType != null" >
+        bp_plan_type,
+      </if>
+      <if test="custIdRef != null" >
+        cust_id_ref,
+      </if>
+      <if test="acctIdRef != null" >
+        acct_id_ref,
+      </if>
+      <if test="bpPlanTypeRef != null" >
+        bp_plan_type_ref,
+      </if>
+      <if test="txnBonus != null" >
+        txn_bonus,
+      </if>
+      <if test="bonusCdFlag != null" >
+        bonus_cd_flag,
+      </if>
+      <if test="txnMchtNo != null" >
+        txn_mcht_no,
+      </if>
+      <if test="brhId != null" >
+        brh_id,
+      </if>
+      <if test="replyCode != null" >
+        reply_code,
+      </if>
+      <if test="txnStatus != null" >
+        txn_status,
+      </if>
+      <if test="replyMessage != null" >
+        reply_message,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="oprUser != null" >
+        opr_user,
+      </if>
+      <if test="checkUser != null" >
+        check_user,
+      </if>
+      <if test="extCoulmn4 != null" >
+        ext_coulmn4,
+      </if>
+      <if test="extCoulmn3 != null" >
+        ext_coulmn3,
+      </if>
+      <if test="extCoulmn2 != null" >
+        ext_coulmn2,
+      </if>
+      <if test="extCoulmn1 != null" >
+        ext_coulmn1,
+      </if>
+      <if test="oraTxnDate != null" >
+        ora_txn_date,
+      </if>
+      <if test="returnFlag != null" >
+        return_flag,
+      </if>
+      <if test="stationId != null" >
+        station_id,
+      </if>
+      <if test="posId != null" >
+        pos_id,
+      </if>
+      <if test="oraKeyReversal != null" >
+        ora_key_reversal,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pkTxnDetail != null" >
+        #{pkTxnDetail,jdbcType=DECIMAL},
+      </if>
+      <if test="usageKey != null" >
+        #{usageKey,jdbcType=VARCHAR},
+      </if>
+      <if test="acqSsn != null" >
+        #{acqSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="bonusSsn != null" >
+        #{bonusSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="keyReversal != null" >
+        #{keyReversal,jdbcType=VARCHAR},
+      </if>
+      <if test="chnlNo != null" >
+        #{chnlNo,jdbcType=VARCHAR},
+      </if>
+      <if test="txnDate != null" >
+        #{txnDate,jdbcType=VARCHAR},
+      </if>
+      <if test="txnTime != null" >
+        #{txnTime,jdbcType=VARCHAR},
+      </if>
+      <if test="txnType != null" >
+        #{txnType,jdbcType=VARCHAR},
+      </if>
+      <if test="txnCode != null" >
+        #{txnCode,jdbcType=VARCHAR},
+      </if>
+      <if test="txnDesc != null" >
+        #{txnDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="txnExtInfo != null" >
+        #{txnExtInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="custId != null" >
+        #{custId,jdbcType=VARCHAR},
+      </if>
+      <if test="acctId != null" >
+        #{acctId,jdbcType=VARCHAR},
+      </if>
+      <if test="bpPlanType != null" >
+        #{bpPlanType,jdbcType=VARCHAR},
+      </if>
+      <if test="custIdRef != null" >
+        #{custIdRef,jdbcType=VARCHAR},
+      </if>
+      <if test="acctIdRef != null" >
+        #{acctIdRef,jdbcType=VARCHAR},
+      </if>
+      <if test="bpPlanTypeRef != null" >
+        #{bpPlanTypeRef,jdbcType=VARCHAR},
+      </if>
+      <if test="txnBonus != null" >
+        #{txnBonus,jdbcType=DECIMAL},
+      </if>
+      <if test="bonusCdFlag != null" >
+        #{bonusCdFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="txnMchtNo != null" >
+        #{txnMchtNo,jdbcType=VARCHAR},
+      </if>
+      <if test="brhId != null" >
+        #{brhId,jdbcType=VARCHAR},
+      </if>
+      <if test="replyCode != null" >
+        #{replyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="txnStatus != null" >
+        #{txnStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="replyMessage != null" >
+        #{replyMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="oprUser != null" >
+        #{oprUser,jdbcType=VARCHAR},
+      </if>
+      <if test="checkUser != null" >
+        #{checkUser,jdbcType=VARCHAR},
+      </if>
+      <if test="extCoulmn4 != null" >
+        #{extCoulmn4,jdbcType=DECIMAL},
+      </if>
+      <if test="extCoulmn3 != null" >
+        #{extCoulmn3,jdbcType=VARCHAR},
+      </if>
+      <if test="extCoulmn2 != null" >
+        #{extCoulmn2,jdbcType=VARCHAR},
+      </if>
+      <if test="extCoulmn1 != null" >
+        #{extCoulmn1,jdbcType=VARCHAR},
+      </if>
+      <if test="oraTxnDate != null" >
+        #{oraTxnDate,jdbcType=VARCHAR},
+      </if>
+      <if test="returnFlag != null" >
+        #{returnFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="stationId != null" >
+        #{stationId,jdbcType=VARCHAR},
+      </if>
+      <if test="posId != null" >
+        #{posId,jdbcType=VARCHAR},
+      </if>
+      <if test="oraKeyReversal != null" >
+        #{oraKeyReversal,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateReturnFlag">
+    update tbl_txn_detail set return_flag=#{returnFlag} where pk_txn_detail=#{pkTxnDetail}
+  </update>
+</mapper>

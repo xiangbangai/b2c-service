@@ -1,0 +1,520 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huateng.data.db2.mapper.TblCustInfMapper">
+    <resultMap id="BaseResultMap" type="com.huateng.data.model.db2.TblCustInf">
+        <id column="cust_id" jdbcType="VARCHAR" property="custId" />
+        <result column="cust_name" jdbcType="VARCHAR" property="custName" />
+        <result column="usage_key" jdbcType="VARCHAR" property="usageKey" />
+        <result column="open_brh" jdbcType="VARCHAR" property="openBrh" />
+        <result column="cust_type" jdbcType="VARCHAR" property="custType" />
+        <result column="cust_id_type" jdbcType="VARCHAR" property="custIdType" />
+        <result column="cust_id_num" jdbcType="VARCHAR" property="custIdNum" />
+        <result column="xuelii" jdbcType="VARCHAR" property="xuelii" />
+        <result column="cust_birthday" jdbcType="VARCHAR" property="custBirthday" />
+        <result column="open_date" jdbcType="VARCHAR" property="openDate" />
+        <result column="close_date" jdbcType="VARCHAR" property="closeDate" />
+        <result column="cust_mobile" jdbcType="VARCHAR" property="custMobile" />
+        <result column="cust_addr" jdbcType="VARCHAR" property="custAddr" />
+        <result column="cust_level" jdbcType="VARCHAR" property="custLevel" />
+        <result column="cust_bonus_status" jdbcType="VARCHAR" property="custBonusStatus" />
+        <result column="modify_date" jdbcType="VARCHAR" property="modifyDate" />
+        <result column="modify_time" jdbcType="VARCHAR" property="modifyTime" />
+        <result column="ext_coulmn1" jdbcType="VARCHAR" property="extCoulmn1" />
+        <result column="ext_coulmn2" jdbcType="VARCHAR" property="extCoulmn2" />
+        <result column="ext_coulmn3" jdbcType="VARCHAR" property="extCoulmn3" />
+        <result column="ext_coulmn4" jdbcType="DECIMAL" property="extCoulmn4" />
+        <result column="cust_gender" jdbcType="VARCHAR" property="custGender" />
+        <result column="cust_mail" jdbcType="VARCHAR" property="custMail" />
+        <result column="cust_career" jdbcType="VARCHAR" property="custCareer" />
+        <result column="plate_num" jdbcType="VARCHAR" property="plateNum" />
+        <result column="year_settlement_flg" jdbcType="VARCHAR" property="yearSettlementFlg" />
+        <result column="is_auth_mobile" jdbcType="VARCHAR" property="isAuthMobile" />
+        <result column="is_auth_mail" jdbcType="VARCHAR" property="isAuthMail" />
+        <result column="is_active" jdbcType="VARCHAR" property="isActive" />
+        <result column="observation_date" jdbcType="VARCHAR" property="observationDate" />
+        <result column="observation_fuel_count" jdbcType="INTEGER" property="observationFuelCount" />
+        <result column="fuel_count" jdbcType="INTEGER" property="fuelCount" />
+        <result column="last_fuel_date" jdbcType="VARCHAR" property="lastFuelDate" />
+        <result column="open_id" jdbcType="VARCHAR" property="openId" />
+        <result column="passwd" jdbcType="VARCHAR" property="passwd" />
+        <result column="cust_invoice" jdbcType="VARCHAR" property="custInvoice" />
+        <result column="bank_no" jdbcType="VARCHAR" property="bankNo" />
+        <result column="is_change" jdbcType="INTEGER" property="isChange" />
+        <result column="is_accept_einvoice" jdbcType="INTEGER" property="isAcceptEinvoice" />
+        <result column="is_real_cust" jdbcType="INTEGER" property="isRealCust" />
+        <result column="is_mobile_use" jdbcType="INTEGER" property="isMobileUse" />
+        <result column="is_plate_num_pay" jdbcType="INTEGER" property="isPlateNumPay" />
+        <result column="active_date" jdbcType="VARCHAR" property="activeDate" />
+        <result column="limited_type" jdbcType="VARCHAR" property="limitedType" />
+        <result column="limited_count" jdbcType="INTEGER" property="limitedCount" />
+        <result column="limited_max_count" jdbcType="INTEGER" property="limitedMaxCount" />
+        <result column="limited_modify_date" jdbcType="VARCHAR" property="limitedModifyDate" />
+        <result column="limited_modify_user" jdbcType="VARCHAR" property="limitedModifyUser" />
+        <result column="is_cust_agreement" jdbcType="INTEGER" property="isCustAgreement" />
+        <result column="agreement_time" jdbcType="VARCHAR" property="agreementTime" />
+    </resultMap>
+
+
+    <update id="updateByCustIdSelective" parameterType="com.huateng.data.model.db2.TblCustInf" >
+        update tbl_cust_inf
+        <set >
+            <if test="custName != null" >
+                cust_name = #{custName,jdbcType=VARCHAR},
+            </if>
+            <if test="usageKey != null" >
+                usage_key = #{usageKey,jdbcType=VARCHAR},
+            </if>
+            <if test="openBrh != null" >
+                open_brh = #{openBrh,jdbcType=VARCHAR},
+            </if>
+            <if test="custType != null" >
+                cust_type = #{custType,jdbcType=VARCHAR},
+            </if>
+            <if test="custIdType != null" >
+                cust_id_type = #{custIdType,jdbcType=VARCHAR},
+            </if>
+            <if test="custIdNum != null" >
+                cust_id_num = #{custIdNum,jdbcType=VARCHAR},
+            </if>
+            <if test="xuelii != null" >
+                xuelii = #{xuelii,jdbcType=VARCHAR},
+            </if>
+            <if test="custBirthday != null" >
+                cust_birthday = #{custBirthday,jdbcType=VARCHAR},
+            </if>
+            <if test="openDate != null" >
+                open_date = #{openDate,jdbcType=VARCHAR},
+            </if>
+            <if test="closeDate != null" >
+                close_date = #{closeDate,jdbcType=VARCHAR},
+            </if>
+            <if test="custMobile != null" >
+                cust_mobile = #{custMobile,jdbcType=VARCHAR},
+            </if>
+            <if test="custAddr != null" >
+                cust_addr = #{custAddr,jdbcType=VARCHAR},
+            </if>
+            <if test="custLevel != null" >
+                cust_level = #{custLevel,jdbcType=VARCHAR},
+            </if>
+            <if test="custBonusStatus != null" >
+                cust_bonus_status = #{custBonusStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="modifyDate != null" >
+                modify_date = #{modifyDate,jdbcType=VARCHAR},
+            </if>
+            <if test="modifyTime != null" >
+                modify_time = #{modifyTime,jdbcType=VARCHAR},
+            </if>
+            <if test="extCoulmn1 != null" >
+                ext_coulmn1 = #{extCoulmn1,jdbcType=VARCHAR},
+            </if>
+            <if test="extCoulmn2 != null" >
+                ext_coulmn2 = #{extCoulmn2,jdbcType=VARCHAR},
+            </if>
+            <if test="extCoulmn3 != null" >
+                ext_coulmn3 = #{extCoulmn3,jdbcType=VARCHAR},
+            </if>
+            <if test="extCoulmn4 != null" >
+                ext_coulmn4 = #{extCoulmn4,jdbcType=DECIMAL},
+            </if>
+            <if test="custGender != null" >
+                cust_gender = #{custGender,jdbcType=VARCHAR},
+            </if>
+            <if test="custMail != null" >
+                cust_mail = #{custMail,jdbcType=VARCHAR},
+            </if>
+            <if test="custCareer != null" >
+                cust_career = #{custCareer,jdbcType=VARCHAR},
+            </if>
+            <if test="plateNum != null" >
+                plate_num = #{plateNum,jdbcType=VARCHAR},
+            </if>
+            <if test="yearSettlementFlg != null" >
+                year_settlement_flg = #{yearSettlementFlg,jdbcType=VARCHAR},
+            </if>
+            <if test="isAuthMobile != null" >
+                is_auth_mobile = #{isAuthMobile,jdbcType=VARCHAR},
+            </if>
+            <if test="isAuthMail != null" >
+                is_auth_mail = #{isAuthMail,jdbcType=VARCHAR},
+            </if>
+            <if test="isActive != null" >
+                is_active = #{isActive,jdbcType=VARCHAR},
+            </if>
+            <if test="observationDate != null" >
+                observation_date = #{observationDate,jdbcType=VARCHAR},
+            </if>
+            <if test="observationFuelCount != null" >
+                observation_fuel_count = #{observationFuelCount,jdbcType=INTEGER},
+            </if>
+            <if test="fuelCount != null" >
+                fuel_count = #{fuelCount,jdbcType=INTEGER},
+            </if>
+            <if test="lastFuelDate != null" >
+                last_fuel_date = #{lastFuelDate,jdbcType=VARCHAR},
+            </if>
+            <if test="openId != null" >
+                open_id = #{openId,jdbcType=VARCHAR},
+            </if>
+            <if test="passwd != null" >
+                passwd = #{passwd,jdbcType=VARCHAR},
+            </if>
+            <if test="custInvoice != null" >
+                cust_invoice = #{custInvoice,jdbcType=VARCHAR},
+            </if>
+            <if test="bankNo != null" >
+                bank_no = #{bankNo,jdbcType=VARCHAR},
+            </if>
+            <if test="isChange != null" >
+                is_change = #{isChange,jdbcType=INTEGER},
+            </if>
+            <if test="isAcceptEinvoice != null" >
+                is_accept_einvoice = #{isAcceptEinvoice,jdbcType=INTEGER},
+            </if>
+            <if test="isRealCust != null" >
+                is_real_cust = #{isRealCust,jdbcType=INTEGER},
+            </if>
+            <if test="isMobileUse != null" >
+                is_mobile_use = #{isMobileUse,jdbcType=INTEGER},
+            </if>
+            <if test="isPlateNumPay != null" >
+                is_plate_num_pay = #{isPlateNumPay,jdbcType=INTEGER},
+            </if>
+            <if test="limitedMaxCount != null" >
+                limited_max_count = #{limitedMaxCount,jdbcType=INTEGER},
+            </if>
+            <if test="limitedCount != null" >
+                limited_count = #{limitedCount,jdbcType=INTEGER},
+            </if>
+            <if test="limitedModifyDate != null" >
+                limited_modify_date = #{limitedModifyDate,jdbcType=VARCHAR},
+            </if>
+            <if test="limitedModifyUser != null" >
+                limited_modify_user = #{limitedModifyUser,jdbcType=VARCHAR},
+            </if>
+            <if test="limitedType != null" >
+                limited_type = #{limitedType,jdbcType=VARCHAR},
+            </if>
+            <if test="isCustAgreement != null" >
+                is_cust_agreement = #{isCustAgreement,jdbcType=INTEGER},
+            </if>
+            <if test="agreementTime != null" >
+                agreement_time = #{agreementTime,jdbcType=VARCHAR},
+            </if>
+            <if test="custHobby != null" >
+                cust_hobby = #{custHobby,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        where cust_id = #{custId,jdbcType=VARCHAR}
+    </update>
+
+    <insert id="insertSelective" parameterType="com.huateng.data.model.db2.TblCustInf" >
+        insert into tbl_cust_inf
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="custId != null" >
+                cust_id,
+            </if>
+            <if test="custName != null" >
+                cust_name,
+            </if>
+            <if test="usageKey != null" >
+                usage_key,
+            </if>
+            <if test="openBrh != null" >
+                open_brh,
+            </if>
+            <if test="custType != null" >
+                cust_type,
+            </if>
+            <if test="custIdType != null" >
+                cust_id_type,
+            </if>
+            <if test="custIdNum != null" >
+                cust_id_num,
+            </if>
+            <if test="xuelii != null" >
+                xuelii,
+            </if>
+            <if test="custBirthday != null" >
+                cust_birthday,
+            </if>
+            <if test="openDate != null" >
+                open_date,
+            </if>
+            <if test="closeDate != null" >
+                close_date,
+            </if>
+            <if test="custMobile != null" >
+                cust_mobile,
+            </if>
+            <if test="custAddr != null" >
+                cust_addr,
+            </if>
+            <if test="custLevel != null" >
+                cust_level,
+            </if>
+            <if test="custBonusStatus != null" >
+                cust_bonus_status,
+            </if>
+            <if test="modifyDate != null" >
+                modify_date,
+            </if>
+            <if test="modifyTime != null" >
+                modify_time,
+            </if>
+            <if test="extCoulmn1 != null" >
+                ext_coulmn1,
+            </if>
+            <if test="extCoulmn2 != null" >
+                ext_coulmn2,
+            </if>
+            <if test="extCoulmn3 != null" >
+                ext_coulmn3,
+            </if>
+            <if test="extCoulmn4 != null" >
+                ext_coulmn4,
+            </if>
+            <if test="custGender != null" >
+                cust_gender,
+            </if>
+            <if test="custMail != null" >
+                cust_mail,
+            </if>
+            <if test="custCareer != null" >
+                cust_career,
+            </if>
+            <if test="plateNum != null" >
+                plate_num,
+            </if>
+            <if test="yearSettlementFlg != null" >
+                year_settlement_flg,
+            </if>
+            <if test="isAuthMobile != null" >
+                is_auth_mobile,
+            </if>
+            <if test="isAuthMail != null" >
+                is_auth_mail,
+            </if>
+            <if test="isActive != null" >
+                is_active,
+            </if>
+            <if test="observationDate != null" >
+                observation_date,
+            </if>
+            <if test="observationFuelCount != null" >
+                observation_fuel_count,
+            </if>
+            <if test="fuelCount != null" >
+                fuel_count,
+            </if>
+            <if test="lastFuelDate != null" >
+                last_fuel_date,
+            </if>
+            <if test="openId != null" >
+                open_id,
+            </if>
+            <if test="passwd != null" >
+                passwd,
+            </if>
+            <if test="custInvoice != null" >
+                cust_invoice,
+            </if>
+            <if test="bankNo != null" >
+                bank_no,
+            </if>
+            <if test="isChange != null" >
+                is_change,
+            </if>
+            <if test="isAcceptEinvoice != null" >
+                is_accept_einvoice,
+            </if>
+            <if test="isRealCust != null" >
+                is_real_cust,
+            </if>
+            <if test="isMobileUse != null" >
+                is_mobile_use,
+            </if>
+            <if test="isPlateNumPay != null" >
+                is_plate_num_pay,
+            </if>
+            <if test="limitedMaxCount != null" >
+                limited_max_count,
+            </if>
+            <if test="limitedCount != null" >
+                limited_count,
+            </if>
+            <if test="limitedModifyDate != null" >
+                limited_modify_date,
+            </if>
+            <if test="limitedModifyUser != null" >
+                limited_modify_user,
+            </if>
+            <if test="limitedType != null" >
+                limited_type,
+            </if>
+            <if test="isCustAgreement != null" >
+                is_cust_agreement,
+            </if>
+            <if test="agreementTime != null" >
+                agreement_time,
+            </if>
+            <if test="custHobby != null" >
+                cust_hobby,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="custId != null" >
+                #{custId,jdbcType=VARCHAR},
+            </if>
+            <if test="custName != null" >
+                #{custName,jdbcType=VARCHAR},
+            </if>
+            <if test="usageKey != null" >
+                #{usageKey,jdbcType=VARCHAR},
+            </if>
+            <if test="openBrh != null" >
+                #{openBrh,jdbcType=VARCHAR},
+            </if>
+            <if test="custType != null" >
+                #{custType,jdbcType=VARCHAR},
+            </if>
+            <if test="custIdType != null" >
+                #{custIdType,jdbcType=VARCHAR},
+            </if>
+            <if test="custIdNum != null" >
+                #{custIdNum,jdbcType=VARCHAR},
+            </if>
+            <if test="xuelii != null" >
+                #{xuelii,jdbcType=VARCHAR},
+            </if>
+            <if test="custBirthday != null" >
+                #{custBirthday,jdbcType=VARCHAR},
+            </if>
+            <if test="openDate != null" >
+                #{openDate,jdbcType=VARCHAR},
+            </if>
+            <if test="closeDate != null" >
+                #{closeDate,jdbcType=VARCHAR},
+            </if>
+            <if test="custMobile != null" >
+                #{custMobile,jdbcType=VARCHAR},
+            </if>
+            <if test="custAddr != null" >
+                #{custAddr,jdbcType=VARCHAR},
+            </if>
+            <if test="custLevel != null" >
+                #{custLevel,jdbcType=VARCHAR},
+            </if>
+            <if test="custBonusStatus != null" >
+                #{custBonusStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="modifyDate != null" >
+                #{modifyDate,jdbcType=VARCHAR},
+            </if>
+            <if test="modifyTime != null" >
+                #{modifyTime,jdbcType=VARCHAR},
+            </if>
+            <if test="extCoulmn1 != null" >
+                #{extCoulmn1,jdbcType=VARCHAR},
+            </if>
+            <if test="extCoulmn2 != null" >
+                #{extCoulmn2,jdbcType=VARCHAR},
+            </if>
+            <if test="extCoulmn3 != null" >
+                #{extCoulmn3,jdbcType=VARCHAR},
+            </if>
+            <if test="extCoulmn4 != null" >
+                #{extCoulmn4,jdbcType=DECIMAL},
+            </if>
+            <if test="custGender != null" >
+                #{custGender,jdbcType=VARCHAR},
+            </if>
+            <if test="custMail != null" >
+                #{custMail,jdbcType=VARCHAR},
+            </if>
+            <if test="custCareer != null" >
+                #{custCareer,jdbcType=VARCHAR},
+            </if>
+            <if test="plateNum != null" >
+                #{plateNum,jdbcType=VARCHAR},
+            </if>
+            <if test="yearSettlementFlg != null" >
+                #{yearSettlementFlg,jdbcType=VARCHAR},
+            </if>
+            <if test="isAuthMobile != null" >
+                #{isAuthMobile,jdbcType=VARCHAR},
+            </if>
+            <if test="isAuthMail != null" >
+                #{isAuthMail,jdbcType=VARCHAR},
+            </if>
+            <if test="isActive != null" >
+                #{isActive,jdbcType=VARCHAR},
+            </if>
+            <if test="observationDate != null" >
+                #{observationDate,jdbcType=VARCHAR},
+            </if>
+            <if test="observationFuelCount != null" >
+                #{observationFuelCount,jdbcType=INTEGER},
+            </if>
+            <if test="fuelCount != null" >
+                #{fuelCount,jdbcType=INTEGER},
+            </if>
+            <if test="lastFuelDate != null" >
+                #{lastFuelDate,jdbcType=VARCHAR},
+            </if>
+            <if test="openId != null" >
+                #{openId,jdbcType=VARCHAR},
+            </if>
+            <if test="passwd != null" >
+                #{passwd,jdbcType=VARCHAR},
+            </if>
+            <if test="custInvoice != null" >
+                #{custInvoice,jdbcType=VARCHAR},
+            </if>
+            <if test="bankNo != null" >
+                #{bankNo,jdbcType=VARCHAR},
+            </if>
+            <if test="isChange != null" >
+                #{isChange,jdbcType=INTEGER},
+            </if>
+            <if test="isAcceptEinvoice != null" >
+                #{isAcceptEinvoice,jdbcType=INTEGER},
+            </if>
+            <if test="isRealCust != null" >
+                #{isRealCust,jdbcType=INTEGER},
+            </if>
+            <if test="isMobileUse != null" >
+                #{isMobileUse,jdbcType=INTEGER},
+            </if>
+            <if test="isPlateNumPay != null" >
+                #{isPlateNumPay,jdbcType=INTEGER},
+            </if>
+            <if test="limitedMaxCount != null" >
+                #{limitedMaxCount,jdbcType=INTEGER},
+            </if>
+            <if test="limitedCount != null" >
+                #{limitedCount,jdbcType=INTEGER},
+            </if>
+            <if test="limitedModifyDate != null" >
+                #{limitedModifyDate,jdbcType=VARCHAR},
+            </if>
+            <if test="limitedModifyUser != null" >
+                #{limitedModifyUser,jdbcType=VARCHAR},
+            </if>
+            <if test="limitedType != null" >
+                #{limitedType,jdbcType=VARCHAR},
+            </if>
+            <if test="isCustAgreement != null" >
+                #{isCustAgreement,jdbcType=INTEGER},
+            </if>
+            <if test="agreementTime != null" >
+                #{agreementTime,jdbcType=VARCHAR},
+            </if>
+            <if test="custHobby != null" >
+                #{custHobby,jdbcType=LONGVARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+</mapper>

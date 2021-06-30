@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.huateng.data.db2.mapper.ServiceOrderDetailMapper" >
+  <resultMap id="BaseResultMap" type="com.huateng.data.model.db2.ServiceOrderDetail" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <id column="order_id" property="orderId" jdbcType="VARCHAR" />
+    <result column="goods_id" property="goodsId" jdbcType="VARCHAR" />
+    <result column="total_price" property="totalPrice" jdbcType="DECIMAL" />
+    <result column="unit_price" property="unitPrice" jdbcType="DECIMAL" />
+    <result column="middle_type" property="middleType" jdbcType="VARCHAR" />
+    <result column="lit_type" property="litType" jdbcType="VARCHAR" />
+    <result column="number" property="number" jdbcType="DECIMAL" />
+    <result column="returnable_number" property="returnableNumber" jdbcType="DECIMAL" />
+    <result column="goods_name" property="goodsName" jdbcType="VARCHAR" />
+    <result column="goods_type" property="goodsType" jdbcType="SMALLINT" />
+    <result column="discount_type" property="discountType" jdbcType="VARCHAR" />
+    <result column="delivery" property="delivery" jdbcType="SMALLINT" />
+    <result column="delivery_date" property="deliveryDate" jdbcType="DATE" />
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    id,order_id, goods_id, total_price, unit_price, middle_type, number, returnable_number,
+    goods_name, goods_type, discount_type
+  </sql>
+
+  <insert id="insert" parameterType="com.huateng.data.model.db2.ServiceOrderDetail" >
+    insert into service_order_detail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="goodsId != null" >
+        goods_id,
+      </if>
+      <if test="totalPrice != null" >
+        total_price,
+      </if>
+      <if test="unitPrice != null" >
+        unit_price,
+      </if>
+      <if test="middleType != null" >
+        middle_type,
+      </if>
+      <if test="litType != null">
+        lit_type,
+      </if>
+      <if test="number != null" >
+        number,
+      </if>
+      <if test="returnableNumber != null" >
+        returnable_number,
+      </if>
+      <if test="goodsName != null" >
+        goods_name,
+      </if>
+      <if test="goodsType != null" >
+        goods_type,
+      </if>
+      <if test="discountType != null" >
+        discount_type,
+      </if>
+      <if test="delivery != null" >
+        delivery,
+      </if>
+      <if test="deliveryDate != null" >
+        delivery_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsId != null" >
+        #{goodsId,jdbcType=VARCHAR},
+      </if>
+      <if test="totalPrice != null" >
+        #{totalPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="unitPrice != null" >
+        #{unitPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="middleType != null" >
+        #{middleType,jdbcType=VARCHAR},
+      </if>
+      <if test="litType != null">
+        #{litType,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null" >
+        #{number,jdbcType=DECIMAL},
+      </if>
+      <if test="returnableNumber != null" >
+        #{returnableNumber,jdbcType=DECIMAL},
+      </if>
+      <if test="goodsName != null" >
+        #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsType != null" >
+        #{goodsType,jdbcType=SMALLINT},
+      </if>
+      <if test="discountType != null" >
+        #{discountType,jdbcType=VARCHAR},
+      </if>
+      <if test="delivery != null" >
+        #{delivery,jdbcType=SMALLINT},
+      </if>
+      <if test="deliveryDate != null" >
+        #{deliveryDate,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+
+    <update id="updateGoods">
+        update service_order_detail set delivery = 1,delivery_date = #{detail.deliveryDate} where id = #{detail.id} and order_id = #{id}
+    </update>
+
+  <update id="updateReturnableNumber">
+    update service_order_detail set returnable_number = #{returnableNumber} where id = #{id} and order_id = #{orderId} and goods_id = #{goodsId}
+  </update>
+
+</mapper>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.huateng.data.db2.mapper.TblSpecialRuleMapper" >
+  <resultMap id="BaseResultMap" type="com.huateng.data.model.db2.TblSpecialRule" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="msg" property="msg" jdbcType="VARCHAR" />
+    <result column="msg_type" property="msgType" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    <result column="create_user" property="createUser" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    id, msg, msg_type, create_date, create_time, create_user, status
+  </sql>
+
+  <select id="checkCustUnionPayWhiteList" resultType="int">
+    select count(msg) from tbl_special_rule where msg_type='01' and status='01' and msg = #{cardNo}
+  </select>
+
+</mapper>

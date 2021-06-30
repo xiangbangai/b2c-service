@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.huateng.data.db2.mapper.TblBonusDetailAccountMapper" >
+  <resultMap id="BaseResultMap" type="com.huateng.data.model.db2.TblBonusDetailAccount" >
+    <id column="id" property="id" jdbcType="DECIMAL" />
+    <result column="cust_id" property="custId" jdbcType="VARCHAR" />
+    <result column="bonus_ssn" property="bonusSsn" jdbcType="VARCHAR" />
+    <result column="station_id" property="stationId" jdbcType="VARCHAR" />
+    <result column="work_date" property="workDate" jdbcType="VARCHAR" />
+    <result column="shift_id" property="shiftId" jdbcType="VARCHAR" />
+    <result column="pos_id" property="posId" jdbcType="VARCHAR" />
+    <result column="list_no" property="listNo" jdbcType="VARCHAR" />
+    <result column="goods_id" property="goodsId" jdbcType="VARCHAR" />
+    <result column="goods_lit_type" property="goodsLitType" jdbcType="VARCHAR" />
+    <result column="goods_num" property="goodsNum" jdbcType="DECIMAL" />
+    <result column="goods_price" property="goodsPrice" jdbcType="DECIMAL" />
+    <result column="bonus_type" property="bonusType" jdbcType="VARCHAR" />
+    <result column="txn_bonus" property="txnBonus" jdbcType="DECIMAL" />
+    <result column="txn_bonus_price" property="txnBonusPrice" jdbcType="DECIMAL" />
+    <result column="rule_station_id" property="ruleStationId" jdbcType="VARCHAR" />
+    <result column="rule_id" property="ruleId" jdbcType="VARCHAR" />
+    <result column="goods_type" property="goodsType" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <insert id="insertSelective" parameterType="com.huateng.data.model.db2.TblBonusDetailAccount" >
+    <selectKey resultType="decimal" keyProperty="id" order="BEFORE">
+      select seq_bonus_detail_account.nextval from dual
+    </selectKey>
+    insert into tbl_bonus_detail_account
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="custId != null" >
+        cust_id,
+      </if>
+      <if test="bonusSsn != null" >
+        bonus_ssn,
+      </if>
+      <if test="stationId != null" >
+        station_id,
+      </if>
+      <if test="workDate != null" >
+        work_date,
+      </if>
+      <if test="shiftId != null" >
+        shift_id,
+      </if>
+      <if test="posId != null" >
+        pos_id,
+      </if>
+      <if test="listNo != null" >
+        list_no,
+      </if>
+      <if test="goodsId != null" >
+        goods_id,
+      </if>
+      <if test="goodsLitType != null" >
+        goods_lit_type,
+      </if>
+      <if test="goodsNum != null" >
+        goods_num,
+      </if>
+      <if test="goodsPrice != null" >
+        goods_price,
+      </if>
+      <if test="bonusType != null" >
+        bonus_type,
+      </if>
+      <if test="txnBonus != null" >
+        txn_bonus,
+      </if>
+      <if test="txnBonusPrice != null" >
+        txn_bonus_price,
+      </if>
+      <if test="ruleStationId != null" >
+        rule_station_id,
+      </if>
+      <if test="ruleId != null" >
+        rule_id,
+      </if>
+      <if test="goodsType != null" >
+        goods_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="custId != null" >
+        #{custId,jdbcType=VARCHAR},
+      </if>
+      <if test="bonusSsn != null" >
+        #{bonusSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="stationId != null" >
+        #{stationId,jdbcType=VARCHAR},
+      </if>
+      <if test="workDate != null" >
+        #{workDate,jdbcType=VARCHAR},
+      </if>
+      <if test="shiftId != null" >
+        #{shiftId,jdbcType=VARCHAR},
+      </if>
+      <if test="posId != null" >
+        #{posId,jdbcType=VARCHAR},
+      </if>
+      <if test="listNo != null" >
+        #{listNo,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsId != null" >
+        #{goodsId,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsLitType != null" >
+        #{goodsLitType,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsNum != null" >
+        #{goodsNum,jdbcType=DECIMAL},
+      </if>
+      <if test="goodsPrice != null" >
+        #{goodsPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="bonusType != null" >
+        #{bonusType,jdbcType=VARCHAR},
+      </if>
+      <if test="txnBonus != null" >
+        #{txnBonus,jdbcType=DECIMAL},
+      </if>
+      <if test="txnBonusPrice != null" >
+        #{txnBonusPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="ruleStationId != null" >
+        #{ruleStationId,jdbcType=VARCHAR},
+      </if>
+      <if test="ruleId != null" >
+        #{ruleId,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsType != null" >
+        #{goodsType,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+</mapper>

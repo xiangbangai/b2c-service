@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huateng.data.db1.mapper.TblCardActivityMapper">
+
+  <resultMap id="ActivityAndRuleCoupon" type="com.huateng.data.model.db1.CardActivityAndRule">
+    <result column="CARD_CODE" property="cardCode" />
+    <result column="CARD_NAME" property="cardName" />
+    <result column="CARD_TYPE" property="cardType" />
+    <result column="SET_MONEY" property="setMoney" />
+    <result column="CARD_DISCOUNT" property="cardDiscount" />
+    <result column="USE_IMPOSE" property="useImpose" />
+    <result column="CARD_BEGINTIME" property="cardBegintime" />
+    <result column="CARD_ENDTIME" property="cardEndtime" />
+    <result column="ACTIVITY_TITEL" property="activityTitel" />
+    <result column="STATION_ID" property="stationId" />
+
+    <result column="TXN_MONEY_OIL" property="txnMoneyOil" />
+    <result column="TXN_NUMBER_OIL" property="txnNumberOil" />
+    <result column="TXN_MONEY_NOT_OIL" property="txnMoneyNotOil" />
+    <result column="TXN_NUMBER_NOT_OIL" property="txnNumberNotOil" />
+    <result column="DAY_OF_WEEK" property="dayOfWeek" />
+    <result column="DAY_OF_MON" property="dayOfMon" />
+  </resultMap>
+
+  <sql id="CouponColumSql">
+    t1.CARD_CODE,t1.CARD_NAME,t1.CARD_TYPE,t1.SET_MONEY,t1.CARD_DISCOUNT,t1.USE_IMPOSE,t1.CARD_BEGINTIME,t1.CARD_ENDTIME,t1.ACTIVITY_TITEL,t1.STATION_ID,
+    t2.TXN_MONEY_OIL,t2.TXN_NUMBER_OIL,t2.TXN_MONEY_NOT_OIL,t2.TXN_NUMBER_NOT_OIL,t2.DAY_OF_WEEK,t2.DAY_OF_MON
+  </sql>
+
+  <select id="queryCardActivityAndRuleList" parameterType="com.huateng.data.vo.params.CardActivity" resultMap="ActivityAndRuleCoupon">
+    select <include refid="CouponColumSql" />
+      from tbl_card_activity t1 join
+      (
+      select ts.CARD_CODE from tbl_card_activity ts
+      <where>
+          <if test="cardStatus != null and cardStatus != ''">
+              and ts.card_status = #{cardStatus}
+          </if>
+          <if test="validDate != null and validDate != ''">
+              <![CDATA[ and ts.card_endtime >= #{validDate} ]]>
+          </if>
+      </where>
+      )ts on t1.CARD_CODE = ts.CARD_CODE
+      join tbl_activity_use_rule t2
+      on t1.card_code = t2.card_code
+
+
+  </select>
+
+</mapper>

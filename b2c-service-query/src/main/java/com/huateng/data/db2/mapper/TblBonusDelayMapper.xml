@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.huateng.data.db2.mapper.TblBonusDelayMapper" >
+  <resultMap id="BaseResultMap" type="com.huateng.data.model.db2.TblBonusDelay" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="cust_id" property="custId" jdbcType="VARCHAR" />
+    <result column="txn_bonus" property="txnBonus" jdbcType="DECIMAL" />
+    <result column="bonus_cd_flag" property="bonusCdFlag" jdbcType="VARCHAR" />
+    <result column="station_id" property="stationId" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    <result column="create_user" property="createUser" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="valid_date" property="validDate" jdbcType="VARCHAR" />
+    <result column="adjust_desc" property="adjustDesc" jdbcType="VARCHAR" />
+    <result column="modify_date" property="modifyDate" jdbcType="VARCHAR" />
+    <result column="modify_time" property="modifyTime" jdbcType="VARCHAR" />
+    <result column="bonus_ssn" property="bonusSsn" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    id, cust_id, txn_bonus, bonus_cd_flag, station_id, create_date, create_time, create_user, 
+    status, valid_date, adjust_desc, modify_date, modify_time, bonus_ssn
+  </sql>
+
+  <select id="queryCustBonusDelay" resultMap="BaseResultMap">
+    select * from tbl_bonus_delay t1 join (
+        select max(id) id from tbl_bonus_delay tt where tt.status='0' and tt.cust_id = #{custId}
+    )t2 on t1.id = t2.id
+  </select>
+
+</mapper>

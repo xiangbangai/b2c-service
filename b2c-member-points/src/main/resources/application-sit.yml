@@ -1,0 +1,68 @@
+spring:
+  application:
+    name: b2c-member-points
+  cloud:
+    consul:
+      host: 127.0.0.1
+      port: 8500
+      discovery:
+        prefer-ip-address: true
+        instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
+        health-check-path: /actuator/health
+        health-check-interval: 10s
+        acl-token:
+        register: true
+        deregister: true
+  datasource:
+    db2:
+      ifxIFXHOST: 192.168.28.16
+      serverName: B2C_TEST
+      portNumber: 8811
+      databaseName: bppc_test
+      user: informix
+      password: ENC(j6M/lcP6zc60HWx7qYCuI7c/VF3J/hHL)
+      ifxNEWCODESET: GB18030-2000,8859-1,819
+      ifxIFX_USE_STRENC: true
+      ifxDBDATE: Y4MD-
+      ifxDB_LOCALE: en_US.8859-1
+      ifxCLIENT_LOCALE: en_US.utf8
+      url: jdbc:informix-sqli://192.168.28.16:8811/bppc_test:informixserver=B2C_TEST;NEWCODESET=GB18030,819,819
+      minPoolSize: 5
+      maxPoolSize: 15
+      maxLifeTime: 20000
+      borrowConnectionTimeout: 30
+    db3:
+      ifxIFXHOST: 192.168.28.16
+      serverName: onzybpifmx_test
+      portNumber: 8899
+      databaseName: bppc_invoice
+      user: informix
+      password: ENC(j6M/lcP6zc60HWx7qYCuI7c/VF3J/hHL)
+      ifxNEWCODESET: GB18030-2000,8859-1,819
+      ifxIFX_USE_STRENC: true
+      ifxDBDATE: Y4MD-
+      ifxDB_LOCALE: en_US.8859-1
+      ifxCLIENT_LOCALE: en_US.utf8
+      url: jdbc:informix-sqli://192.168.28.16:8899/bppc_invoice:informixserver=onzybpifmx_test;NEWCODESET=GB18030,819,819
+      minPoolSize: 5
+      maxPoolSize: 15
+      maxLifeTime: 20000
+      borrowConnectionTimeout: 30
+  jta:
+    atomikos:
+      properties:
+        log-base-dir: ${user.dir}/logs
+        enable-logging: false
+swagger:
+  enabled: true
+rule:
+  locale: /sharedisk/bpas/DataFile/RuleFile/rules/
+  file: txnBonus_JF.pkg
+  name: txnBonus_JF
+WeChat:
+  sendInvoice:
+    url: http://wxt01.bppc.com.cn/zy-wxweb/api/invoice/makeout
+    username: zybp_api_b2b
+    password: zybpb2b123
+  pointsChange:
+    url: http://wxt01.bppc.com.cn/zy-wxweb/api/template-msg/account-change

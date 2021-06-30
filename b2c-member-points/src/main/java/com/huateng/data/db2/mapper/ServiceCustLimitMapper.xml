@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huateng.data.db2.mapper.ServiceCustLimitMapper">
+    <resultMap id="BaseResultMap" type="com.huateng.data.model.db2.ServiceCustLimit">
+        <id column="cust_id" jdbcType="VARCHAR" property="custId"/>
+        <id column="limit_type" jdbcType="SMALLINT" property="limitType"/>
+        <result column="limit_key" jdbcType="VARCHAR" property="limitKey"/>
+        <result column="limit_value" jdbcType="DECIMAL" property="limitValue"/>
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        cust_id, limit_type, limit_key, limit_value
+    </sql>
+
+    <insert id="insert" parameterType="com.huateng.data.model.db2.ServiceCustLimit" >
+        insert into service_cust_limit
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="custId != null" >
+                cust_id,
+            </if>
+            <if test="limitType != null" >
+                limit_type,
+            </if>
+            <if test="limitKey != null" >
+                limit_key,
+            </if>
+            <if test="limitValue != null" >
+                limit_value,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="custId != null" >
+                #{custId,jdbcType=VARCHAR},
+            </if>
+            <if test="limitType != null" >
+                #{limitType,jdbcType=SMALLINT},
+            </if>
+            <if test="limitKey != null" >
+                #{limitKey,jdbcType=VARCHAR},
+            </if>
+            <if test="limitValue != null" >
+                #{limitValue,jdbcType=DECIMAL},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective">
+        update service_cust_limit
+        <set>
+            <if test="custId != null">
+                cust_id = #{custId,jdbcType=VARCHAR},
+            </if>
+            <if test="limitType != null">
+                limit_type = #{limitType,jdbcType=SMALLINT},
+            </if>
+            <if test="limitKey != null">
+                limit_key = #{limitKey,jdbcType=VARCHAR},
+            </if>
+            <if test="limitValue != null">
+                limit_value = #{limitValue,jdbcType=DECIMAL},
+            </if>
+        </set>
+        where limit_type = #{limitType} and cust_id = #{custId}
+    </update>
+</mapper>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huateng.data.db3.mapper.PayJMapper">
+    <resultMap id="BaseResultMap" type="com.huateng.data.model.db3.PayJ">
+        <result column="shopid" jdbcType="VARCHAR" property="shopid"/>
+        <result column="dt" jdbcType="TIMESTAMP" property="dt"/>
+        <result column="time" jdbcType="TIMESTAMP" property="time"/>
+        <result column="reqtime" jdbcType="CHAR" property="reqtime"/>
+        <result column="listno" jdbcType="INTEGER" property="listno"/>
+        <result column="sublistno" jdbcType="INTEGER" property="sublistno"/>
+        <result column="pos_id" jdbcType="CHAR" property="posId"/>
+        <result column="cashier_id" jdbcType="CHAR" property="cashierId"/>
+        <result column="pay_seq" jdbcType="SMALLINT" property="paySeq"/>
+        <result column="pay_reason" jdbcType="VARCHAR" property="payReason"/>
+        <result column="pay_type" jdbcType="CHAR" property="payType"/>
+        <result column="deliver_flag" jdbcType="CHAR" property="deliverFlag"/>
+        <result column="curren_code" jdbcType="CHAR" property="currenCode"/>
+        <result column="pay_value" jdbcType="DECIMAL" property="payValue"/>
+        <result column="equiv_value" jdbcType="DECIMAL" property="equivValue"/>
+        <result column="cardno" jdbcType="VARCHAR" property="cardno"/>
+        <result column="flag3" jdbcType="CHAR" property="flag3"/>
+        <result column="trainflag" jdbcType="CHAR" property="trainflag"/>
+        <result column="serialid" jdbcType="DECIMAL" property="serialid"/>
+        <result column="shiftid" jdbcType="INTEGER" property="shiftid"/>
+        <result column="workdate" jdbcType="TIMESTAMP" property="workdate"/>
+        <result column="pointsttl" jdbcType="DECIMAL" property="pointsttl"/>
+        <result column="subcardtype" jdbcType="VARCHAR" property="subcardtype"/>
+    </resultMap>
+
+    <select id="queryInfo" parameterType="com.huateng.data.model.db3.PayJ" resultMap="BaseResultMap">
+        select * from pay_j where shopid=#{shopid} and listno=#{listno} and pos_id=#{posId} and shiftid=#{shiftid} and workdate=#{workdate}
+    </select>
+</mapper>

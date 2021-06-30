@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huateng.data.db3.mapper.EdclistnoMapper">
+    <resultMap id="BaseResultMap" type="com.huateng.data.model.db3.Edclistno">
+        <result column="shopid" jdbcType="VARCHAR" property="shopid"/>
+        <result column="seqno" jdbcType="VARCHAR" property="seqno"/>
+        <result column="flag" jdbcType="INTEGER" property="flag"/>
+        <result column="dt" jdbcType="TIMESTAMP" property="dt"/>
+        <result column="time" jdbcType="TIMESTAMP" property="time"/>
+        <result column="listno" jdbcType="INTEGER" property="listno"/>
+        <result column="sublistno" jdbcType="INTEGER" property="sublistno"/>
+        <result column="pos_id" jdbcType="VARCHAR" property="posId"/>
+        <result column="shiftid" jdbcType="INTEGER" property="shiftid"/>
+        <result column="workdate" jdbcType="VARCHAR" property="workdate"/>
+        <result column="taxtype" jdbcType="VARCHAR" property="taxtype"/>
+        <result column="payposid" jdbcType="VARCHAR" property="payposid"/>
+    </resultMap>
+    <insert id="insert" parameterType="com.huateng.data.model.db3.Edclistno">
+        insert into edclistno
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="shopid != null">
+                shopid,
+            </if>
+            <if test="seqno != null">
+                seqno,
+            </if>
+            <if test="flag != null">
+                flag,
+            </if>
+            <if test="dt != null">
+                dt,
+            </if>
+            <if test="time != null">
+                time,
+            </if>
+            <if test="listno != null">
+                listno,
+            </if>
+            <if test="sublistno != null">
+                sublistno,
+            </if>
+            <if test="posId != null">
+                pos_id,
+            </if>
+            <if test="shiftid != null">
+                shiftid,
+            </if>
+            <if test="workdate != null">
+                workdate,
+            </if>
+            <if test="taxtype != null">
+                taxtype,
+            </if>
+            <if test="payposid != null">
+                payposid,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="shopid != null">
+                #{shopid,jdbcType=VARCHAR},
+            </if>
+            <if test="seqno != null">
+                #{seqno,jdbcType=VARCHAR},
+            </if>
+            <if test="flag != null">
+                #{flag,jdbcType=INTEGER},
+            </if>
+            <if test="dt != null">
+                #{dt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="time != null">
+                #{time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="listno != null">
+                #{listno,jdbcType=INTEGER},
+            </if>
+            <if test="sublistno != null">
+                #{sublistno,jdbcType=INTEGER},
+            </if>
+            <if test="posId != null">
+                #{posId,jdbcType=VARCHAR},
+            </if>
+            <if test="shiftid != null">
+                #{shiftid,jdbcType=INTEGER},
+            </if>
+            <if test="workdate != null">
+                #{workdate,jdbcType=VARCHAR},
+            </if>
+            <if test="taxtype != null">
+                #{taxtype,jdbcType=VARCHAR},
+            </if>
+            <if test="payposid != null">
+                #{payposid,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+</mapper>
